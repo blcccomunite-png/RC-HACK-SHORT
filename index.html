@@ -2,899 +2,824 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
     <title>RC AURA HACK</title>
     <style>
         :root {
             --panel-width: 228px;
-            --panel-red: #ff2a1b;
-            --panel-red-2: #d5060b;
-            --panel-orange: #ff8b2c;
-            --panel-dark: #070305;
-            --panel-deep: #1b0205;
-            --panel-mid: #4c0509;
-            --panel-line: rgba(255, 70, 48, .48);
-            --panel-text: #fff7f4;
-            --panel-muted: #b8766e;
-            --panel-glow: rgba(255, 38, 20, .55);
+            --accent: #8b2cff;
+            --accent2: #00d9ff;
+            --panel-dark: #05020b;
+            --panel-deep: #12051f;
+            --panel-text: #fff;
+            --muted: #b8a9c8;
         }
-        * { box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; background: #000; font-family: "Segoe UI", Arial, sans-serif; }
-        iframe { display: block; width: 100%; height: 100%; border: 0; }
-
+        * {
+            box-sizing: border-box
+        }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: "Segoe UI", Arial, sans-serif
+        }
+        iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0
+        }
         #c-panel {
-            position: fixed; top: 112px; left: calc(50% - 114px); width: var(--panel-width);
-            min-height: 0; padding: 10px; color: var(--panel-text); text-align: center;
-            cursor: move; touch-action: none; isolation: isolate; overflow: hidden;
-            z-index: 10000; border: 1px solid rgba(255, 104, 70, .92); border-radius: 22px;
-            background: radial-gradient(circle at 50% -12%, rgba(255, 86, 34, .23), transparent 34%),
-                        linear-gradient(180deg, rgba(86, 5, 10, .99) 0%, rgba(35, 2, 6, .995) 43%, rgba(5, 3, 5, .998) 100%);
-            box-shadow: 0 0 0 3px rgba(68, 0, 3, .98), 0 0 0 5px rgba(255, 39, 24, .17),
-                        0 0 22px rgba(255, 28, 18, .48), 0 18px 46px rgba(0, 0, 0, .74),
-                        inset 0 1px 0 rgba(255,255,255,.16), inset 0 0 30px rgba(198, 0, 0, .16);
-            backdrop-filter: blur(13px) saturate(125%);
-            -webkit-backdrop-filter: blur(13px) saturate(125%);
+            position: fixed;
+            top: 112px;
+            left: calc(50% - 114px);
+            width: var(--panel-width);
+            padding: 10px;
+            color: var(--panel-text);
+            text-align: center;
+            cursor: move;
+            touch-action: none;
+            isolation: isolate;
+            overflow: hidden;
+            z-index: 10000;
+            border: 1px solid #9d54ff;
+            border-radius: 22px;
+            background: radial-gradient(circle at 50% -12%, rgba(174, 50, 255, .28), transparent 35%),
+                linear-gradient(180deg, rgba(35, 8, 65, .99), rgba(12, 3, 25, .995) 50%, rgba(2, 2, 7, .999));
+            box-shadow: 0 0 0 3px #17052b, 0 0 0 5px rgba(139, 44, 255, .2), 0 0 25px rgba(139, 44, 255, .55),
+                0 18px 46px rgba(0, 0, 0, .8), inset 0 1px 0 rgba(255, 255, 255, .16), inset 0 0 30px rgba(120, 0, 255, .15);
+            backdrop-filter: blur(13px) saturate(130%);
+            -webkit-backdrop-filter: blur(13px) saturate(130%);
         }
-        #c-panel::before {
-            content: ""; position: absolute; inset: 5px; z-index: -1; pointer-events: none;
-            border: 1px solid rgba(255, 75, 49, .38); border-radius: 17px;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,.025), inset 0 0 18px rgba(255, 0, 0, .09);
-        }
-        #c-panel::after {
-            content: ""; position: absolute; left: 8%; right: 8%; bottom: -12px; height: 24px;
-            z-index: -2; border-radius: 50%; background: rgba(255, 40, 21, .34); filter: blur(12px);
+        #c-panel:before {
+            content: "";
+            position: absolute;
+            inset: 5px;
+            z-index: -1;
             pointer-events: none;
+            border: 1px solid rgba(157, 84, 255, .4);
+            border-radius: 17px;
+            box-shadow: inset 0 0 18px rgba(139, 44, 255, .12)
         }
-
+        #c-panel:after {
+            content: "";
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            bottom: -12px;
+            height: 24px;
+            z-index: -2;
+            border-radius: 50%;
+            background: rgba(139, 44, 255, .4);
+            filter: blur(12px)
+        }
         .panel-topbar {
-            display: flex; align-items: center; justify-content: space-between; min-height: 35px;
-            padding: 0 1px 7px 5px; border-bottom: 1px solid rgba(255, 88, 62, .22);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 35px;
+            padding: 0 1px 7px 5px;
+            border-bottom: 1px solid rgba(157, 84, 255, .3)
         }
         .panel-name {
-            min-width: 0; overflow: hidden; color: #fff; font-size: 9px; line-height: 1;
-            font-weight: 900; letter-spacing: 1.85px; white-space: nowrap; text-overflow: ellipsis;
-            text-transform: uppercase; text-shadow: 0 0 9px rgba(255, 59, 39, .68);
+            min-width: 0;
+            overflow: hidden;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 1.85px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            text-shadow: 0 0 9px rgba(190, 100, 255, .8)
         }
         .panel-close {
-            flex: 0 0 auto; width: 32px; height: 32px; padding: 0;
-            border: 1px solid #ff9b3f; border-radius: 50%; color: #fff;
-            background: linear-gradient(145deg, #ff4b20 0%, #f20b0b 52%, #b70000 100%);
-            box-shadow: 0 0 0 3px rgba(255, 75, 32, .14), 0 0 12px rgba(255, 36, 22, .70),
-                        inset 0 1px 0 rgba(255,255,255,.34);
-            font-size: 23px; line-height: 27px; font-weight: 300; cursor: pointer;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: 1px solid #dca7ff;
+            border-radius: 50%;
+            color: #fff;
+            background: linear-gradient(145deg, #b94cff, #7a14e8 55%, #39007d);
+            box-shadow: 0 0 0 3px rgba(174, 80, 255, .15), 0 0 15px rgba(157, 45, 255, .75), inset 0 1px 0 rgba(255, 255, 255, .34);
+            font-size: 23px;
+            line-height: 27px;
+            cursor: pointer
         }
-        .panel-close:active { transform: scale(.95); }
-
+        .panel-close:active {
+            transform: scale(.95)
+        }
         #c-panel.minimized {
-            width: 46px !important; height: 46px !important; min-height: 46px !important;
-            padding: 0 !important; display: grid !important; place-items: center;
+            width: 46px !important;
+            height: 46px !important;
+            padding: 0 !important;
+            display: grid !important;
+            place-items: center;
             border-radius: 50% !important;
-            background: linear-gradient(145deg, #ff6a30, #ed0909 55%, #740000);
-            box-shadow: 0 0 0 3px rgba(255, 63, 34, .15), 0 0 18px rgba(255, 39, 23, .67), 0 10px 24px rgba(0,0,0,.65);
+            background: linear-gradient(145deg, #c65aff, #7411dc 55%, #31006b);
+            box-shadow: 0 0 0 3px rgba(157, 70, 255, .15), 0 0 18px rgba(139, 39, 255, .7), 0 10px 24px rgba(0, 0, 0, .65)
         }
-        #c-panel.minimized * { display: none !important; }
-        #c-panel.minimized::before { display: none; }
-        #c-panel.minimized::after {
-            content: "Z"; position: static; width: auto; height: auto; border-radius: 0;
-            background: none; filter: none; color: #fff; font-size: 22px; font-weight: 900;
-            letter-spacing: .8px; text-shadow: 0 0 12px rgba(255,255,255,0.9);
+        #c-panel.minimized * {
+            display: none !important
         }
-
-        .screen { display: none; }
-        .active-screen { display: block; }
-        .screen-shell { padding: 8px 3px 2px; }
-
+        #c-panel.minimized:before {
+            display: none
+        }
+        /* 🔥 FIXED: "Z" → "RC" */
+        #c-panel.minimized:after {
+            content: "RC";
+            position: static;
+            width: auto;
+            height: auto;
+            background: none;
+            filter: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 900;
+            text-shadow: 0 0 12px #fff;
+            letter-spacing: 1px;
+        }
+        .screen {
+            display: none
+        }
+        .active-screen {
+            display: block
+        }
+        .screen-shell {
+            padding: 8px 3px 2px
+        }
         .brand-title {
-            display: inline-flex; align-items: center; justify-content: center; min-height: 22px;
-            margin: 0 auto 7px; padding: 0 11px; border: 1px solid rgba(255, 67, 44, .43);
-            border-radius: 999px; color: #ffd9d1;
-            background: linear-gradient(180deg, rgba(71, 6, 9, .84), rgba(38, 2, 5, .88));
-            box-shadow: inset 0 0 10px rgba(255, 0, 0, .08);
-            font-size: 7px; font-weight: 900; letter-spacing: 1.8px; text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 22px;
+            margin: 0 auto 7px;
+            padding: 0 11px;
+            border: 1px solid rgba(157, 84, 255, .5);
+            border-radius: 999px;
+            color: #eadbff;
+            background: linear-gradient(180deg, rgba(60, 18, 100, .85), rgba(24, 5, 45, .9));
+            box-shadow: inset 0 0 10px rgba(174, 50, 255, .1);
+            font-size: 7px;
+            font-weight: 900;
+            letter-spacing: 1.8px;
+            text-transform: uppercase
         }
         input {
-            width: 100%; min-height: 34px; margin: 4px 0 6px; padding: 8px 9px;
-            border: 1px solid rgba(255, 73, 48, .48); border-radius: 9px; outline: none; color: #fff;
-            background: linear-gradient(180deg, rgba(24, 3, 5, .96), rgba(9, 2, 3, .98));
-            box-shadow: inset 0 0 12px rgba(255, 0, 0, .065);
-            font-size: 9px; font-weight: 800; text-align: center; letter-spacing: .8px;
+            width: 100%;
+            min-height: 34px;
+            margin: 4px 0 6px;
+            padding: 8px 9px;
+            border: 1px solid rgba(157, 84, 255, .55);
+            border-radius: 9px;
+            outline: 0;
+            color: #fff;
+            background: linear-gradient(180deg, rgba(18, 4, 32, .96), rgba(5, 2, 12, .98));
+            box-shadow: inset 0 0 12px rgba(139, 44, 255, .08);
+            font-size: 9px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: .8px
         }
-        input::placeholder { color: #9e655e; }
+        input::placeholder {
+            color: #8f7aa2
+        }
         input:focus {
-            border-color: #ff7048;
-            box-shadow: 0 0 0 2px rgba(255, 62, 34, .11), inset 0 0 12px rgba(255,0,0,.08);
+            border-color: #c078ff;
+            box-shadow: 0 0 0 2px rgba(139, 44, 255, .13), inset 0 0 12px rgba(139, 44, 255, .1)
         }
-
         .btn {
-            width: 100%; min-height: 35px; margin-top: 6px; padding: 8px 9px;
-            border: 1px solid rgba(255, 79, 52, .62); border-radius: 9px; color: #ffe1db;
-            background: linear-gradient(180deg, rgba(67, 6, 9, .96), rgba(20, 2, 4, .99));
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 7px 15px rgba(0,0,0,.27);
-            cursor: pointer; font-size: 8px; font-weight: 900; letter-spacing: 1.05px;
-            text-transform: uppercase;
+            width: 100%;
+            min-height: 35px;
+            margin-top: 6px;
+            padding: 8px 9px;
+            border: 1px solid rgba(157, 84, 255, .6);
+            border-radius: 9px;
+            color: #f5eaff;
+            background: linear-gradient(180deg, rgba(52, 15, 82, .96), rgba(13, 3, 25, .99));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07), 0 7px 15px rgba(0, 0, 0, .27);
+            cursor: pointer;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 1.05px;
+            text-transform: uppercase
         }
-        .btn:active { transform: translateY(1px) scale(.99); }
+        .btn:active {
+            transform: translateY(1px) scale(.99)
+        }
         .btn-tg {
-            color: #fff; border-color: rgba(255, 132, 68, .92);
-            background: linear-gradient(135deg, #ff7c47 0%, #ff2b1d 44%, #d00000 100%);
-            box-shadow: 0 0 14px rgba(255, 46, 26, .28), inset 0 1px 0 rgba(255,255,255,.25);
+            color: #fff;
+            border-color: #8beaff;
+            background: linear-gradient(135deg, #bf48ff, #632cff 45%, #008fe8);
+            box-shadow: 0 0 15px rgba(0, 184, 255, .3), inset 0 1px 0 rgba(255, 255, 255, .25)
         }
-        .btn-tg::before { content: "⚡"; margin-right: 5px; }
-
+        .btn-tg:before {
+            content: "⚡";
+            margin-right: 5px
+        }
         .welcome-msg {
-            margin: 0 0 8px; padding: 6px 8px; border: 1px solid rgba(255, 67, 44, .3);
-            border-radius: 8px; background: rgba(42, 3, 6, .6); color: #ffd9d1;
-            font-size: 6.5px; font-weight: 700; line-height: 1.4; letter-spacing: .35px; text-align: center;
+            margin: 0 0 8px;
+            padding: 6px 8px;
+            border: 1px solid rgba(157, 84, 255, .3);
+            border-radius: 8px;
+            background: rgba(42, 8, 62, .6);
+            color: #ded0eb;
+            font-size: 6.5px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: .35px
         }
-
         .prediction-card {
-            position: relative; margin: 2px 0 7px; padding: 7px; overflow: hidden;
-            border: 1px solid rgba(255, 65, 43, .42); border-radius: 13px;
-            background: radial-gradient(circle at 50% 4%, rgba(255, 66, 32, .13), transparent 35%),
-                        linear-gradient(180deg, rgba(55, 4, 8, .94), rgba(12, 2, 4, .98));
-            box-shadow: inset 0 0 18px rgba(255,0,0,.075), 0 8px 18px rgba(0,0,0,.32);
+            position: relative;
+            margin: 2px 0 7px;
+            padding: 7px;
+            overflow: hidden;
+            border: 1px solid rgba(157, 84, 255, .48);
+            border-radius: 13px;
+            background: radial-gradient(circle at 50% 4%, rgba(139, 44, 255, .15), transparent 35%),
+                linear-gradient(180deg, rgba(35, 8, 55, .94), rgba(5, 2, 12, .98));
+            box-shadow: inset 0 0 18px rgba(139, 44, 255, .08), 0 8px 18px rgba(0, 0, 0, .32)
         }
-        .prediction-card::before {
-            content: ""; position: absolute; inset: 5px; pointer-events: none;
-            border: 1px solid rgba(255,255,255,.025); border-radius: 9px;
+        .prediction-card:before {
+            content: "";
+            position: absolute;
+            inset: 5px;
+            border: 1px solid rgba(255, 255, 255, .025);
+            border-radius: 9px
         }
-
         .result-layout {
-            position: relative; z-index: 1; display: grid; grid-template-columns: 58px 1fr;
-            gap: 8px; align-items: center; min-height: 69px; text-align: left;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 58px 1fr;
+            gap: 8px;
+            align-items: center;
+            min-height: 69px;
+            text-align: left
         }
         .result-orb {
-            position: relative; width: 54px; height: 54px; display: grid; place-items: center;
-            border-radius: 50%; color: #fff; font-size: 18px; font-weight: 1000;
-            text-shadow: 0 2px 4px rgba(0,0,0,.42); transition: background 0.35s ease;
+            position: relative;
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 1000;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, .42)
         }
         .orb-green {
             background: radial-gradient(circle at 36% 28%, #f7ffff 0 9%, #b7fff0 10% 18%, #38e3b4 19% 34%, #05a979 35% 59%, #007052 60% 72%, #032a20 73% 100%);
-            box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(20, 238, 166, .50), 0 0 16px rgba(255, 171, 25, .35);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .055), 0 0 13px rgba(20, 238, 166, .6), 0 0 22px rgba(20, 238, 166, .35)
         }
         .orb-red {
             background: radial-gradient(circle at 36% 28%, #fff7f7 0 9%, #ffb7b7 10% 18%, #e33838 19% 34%, #a90505 35% 59%, #700000 60% 72%, #2a0303 73% 100%);
-            box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(238, 38, 38, .55), 0 0 16px rgba(255, 80, 25, .40);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .055), 0 0 13px rgba(238, 38, 38, .65), 0 0 22px rgba(255, 45, 30, .35)
         }
         .orb-default {
-            background: radial-gradient(circle at 36% 28%, #f7ffff 0 9%, #b7fff0 10% 18%, #38e3b4 19% 34%, #05a979 35% 59%, #007052 60% 72%, #032a20 73% 100%);
-            box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(20, 238, 166, .50), 0 0 16px rgba(255, 171, 25, .35);
+            background: radial-gradient(circle at 36% 28%, #fff 0 10%, #bfa9ff 11% 22%, #8b45ff 23% 50%, #431080 51% 75%, #16052c 76% 100%);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .055), 0 0 18px rgba(139, 44, 255, .55)
         }
-
-        .result-orb::before, .result-orb::after {
-            content: ""; position: absolute; inset: -4px;
-            border: 2px solid rgba(255, 167, 31, .78); border-left-color: transparent;
-            border-bottom-color: transparent; border-radius: 50%; transform: rotate(14deg);
-            pointer-events: none;
+        .result-orb:before,
+        .result-orb:after {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border: 2px solid rgba(0, 217, 255, .8);
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            transform: rotate(14deg)
         }
-        .result-orb::after {
-            inset: 5px; border-width: 1px; border-color: rgba(255,255,255,.72);
-            border-right-color: transparent; transform: rotate(-25deg);
+        .result-orb:after {
+            inset: 5px;
+            border-width: 1px;
+            border-color: rgba(255, 255, 255, .72);
+            border-right-color: transparent;
+            transform: rotate(-25deg)
         }
-
-        .result-copy { min-width: 0; }
+        .result-copy {
+            min-width: 0
+        }
         .result-kicker {
-            display: block; margin-bottom: 2px; color: #98655f; font-size: 5.5px;
-            font-weight: 700; letter-spacing: 2.45px; text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+            color: #9d91ab;
+            font-size: 5.5px;
+            font-weight: 700;
+            letter-spacing: 2.45px;
+            text-transform: uppercase
         }
         .res-main {
-            display: block; color: #ff9c1f; font-size: 24px; line-height: 1; font-weight: 1000;
-            letter-spacing: .5px; text-shadow: 0 0 11px rgba(255, 92, 24, .50), 0 2px 0 rgba(0,0,0,.42);
+            display: block;
+            color: #d86cff;
+            font-size: 24px;
+            line-height: 1;
+            font-weight: 1000;
+            letter-spacing: .5px;
+            text-shadow: 0 0 11px rgba(190, 65, 255, .65), 0 2px 0 rgba(0, 0, 0, .42)
         }
-
         .confidence-row {
-            display: flex; align-items: center; gap: 5px; margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 6px
         }
         .conf-label {
-            flex: 0 0 auto; color: #a9776e; font-size: 5.5px; font-weight: 800;
-            letter-spacing: .75px; white-space: nowrap; text-transform: uppercase;
+            flex: 0 0 auto;
+            color: #a99bb5;
+            font-size: 5.5px;
+            font-weight: 800;
+            letter-spacing: .75px;
+            white-space: nowrap;
+            text-transform: uppercase
         }
         .confidence-track {
-            flex: 1 1 auto; height: 3px; overflow: hidden; border-radius: 999px;
-            background: rgba(255,255,255,.09); box-shadow: inset 0 1px 2px rgba(0,0,0,.72);
+            flex: 1;
+            height: 3px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .09);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, .72)
         }
-        .confidence-track::after {
-            content: ""; display: block; width: var(--conf-width, 91%); height: 100%;
-            border-radius: inherit; background: linear-gradient(90deg, #ff2c1d, #ffa31c);
-            box-shadow: 0 0 7px rgba(255, 89, 22, .80); transition: width 0.4s ease;
+        .confidence-track:after {
+            content: "";
+            display: block;
+            width: var(--conf-width, 91%);
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #8b2cff, #00d9ff);
+            box-shadow: 0 0 7px rgba(0, 217, 255, .8)
         }
-
         .res-sub {
-            position: relative; z-index: 1; display: block; min-height: 18px; margin-top: 5px;
-            padding-top: 5px; border-top: 1px solid rgba(255, 65, 42, .16);
-            color: #c07769; font-size: 5.4px; line-height: 1.35; font-weight: 900;
-            letter-spacing: 1.2px; text-align: center; text-transform: uppercase; overflow-wrap: anywhere;
+            position: relative;
+            z-index: 1;
+            display: block;
+            min-height: 18px;
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(157, 84, 255, .2);
+            color: #c2b3cf;
+            font-size: 5.4px;
+            line-height: 1.35;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            text-align: center;
+            text-transform: uppercase;
+            overflow-wrap: anywhere
         }
-        .res-sub::before, .res-sub::after {
-            content: "●"; margin: 0 5px; color: #ff3327; font-size: 5px; text-shadow: 0 0 6px #ff2d20;
+        .res-sub:before,
+        .res-sub:after {
+            content: "●";
+            margin: 0 5px;
+            font-size: 5px;
+            text-shadow: 0 0 6px currentColor
         }
-
         .pattern-reason {
-            display: block; margin-top: 4px; color: #ffaa77; font-size: 5.8px;
-            font-weight: 700; letter-spacing: 0.4px; text-transform: none;
-            background: rgba(255,255,255,.04); padding: 3px 6px; border-radius: 6px;
-            border: 1px solid rgba(255,150,80,.12);
+            display: block;
+            margin-top: 4px;
+            color: #cbbce0;
+            font-size: 5.8px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            background: rgba(255, 255, 255, .04);
+            padding: 3px 6px;
+            border-radius: 6px;
+            border: 1px solid rgba(157, 84, 255, .14)
         }
-
         .primary-action {
-            min-height: 40px; margin-top: 0; border: 0; border-radius: 8px; color: #fff;
-            background: linear-gradient(115deg, rgba(255,255,255,.17) 0 17%, transparent 18% 100%),
-                        linear-gradient(135deg, #ff7c5b 0%, #ff2721 43%, #c90000 100%);
-            box-shadow: 0 0 16px rgba(255, 36, 20, .36), inset 0 1px 0 rgba(255,255,255,.25),
-                        inset 0 -7px 13px rgba(111,0,0,.17);
-            font-size: 8.5px; letter-spacing: 1.55px;
+            min-height: 40px;
+            margin-top: 0;
+            border: 0;
+            border-radius: 8px;
+            color: #fff;
+            background: linear-gradient(115deg, rgba(255, 255, 255, .17) 0 17%, transparent 18% 100%),
+                linear-gradient(135deg, #c54cff, #7b2cff 45%, #008fe8);
+            box-shadow: 0 0 18px rgba(139, 44, 255, .45), inset 0 1px 0 rgba(255, 255, 255, .25);
+            font-size: 8.5px;
+            letter-spacing: 1.55px
         }
-        .primary-action::before { content: "⚡"; margin-right: 6px; }
-
-        .secondary-actions { display: grid; grid-template-columns: 1fr; margin-top: 5px; }
+        .primary-action:before {
+            content: "⚡";
+            margin-right: 6px
+        }
+        .secondary-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-top: 5px
+        }
         .secondary-actions .btn {
-            min-height: 25px; margin: 0; padding: 5px 7px;
-            border-color: rgba(255, 67, 45, .32); background: rgba(31, 3, 5, .72);
-            color: #ad7269; font-size: 6px; letter-spacing: 1px; box-shadow: none;
+            min-height: 25px;
+            margin: 0;
+            padding: 5px 7px;
+            border-color: rgba(157, 84, 255, .32);
+            background: rgba(18, 4, 30, .72);
+            color: #9f91ad;
+            font-size: 6px;
+            letter-spacing: 1px;
+            box-shadow: none
         }
-
         .server-footer {
-            display: flex; align-items: center; justify-content: space-between; gap: 6px;
-            min-height: 25px; margin-top: 6px; padding: 6px 7px 2px;
-            border-top: 1px solid rgba(255, 71, 47, .19); color: #b8756b;
-            font-size: 5.7px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            min-height: 25px;
+            margin-top: 6px;
+            padding: 6px 7px 2px;
+            border-top: 1px solid rgba(157, 84, 255, .2);
+            color: #a99bb5;
+            font-size: 5.7px;
+            font-weight: 800;
+            letter-spacing: 1.7px;
+            text-transform: uppercase
         }
-        .server-footer .live-dot {
-            display: inline-block; width: 5px; height: 5px; margin-right: 4px;
-            border-radius: 50%; background: #ff3427; box-shadow: 0 0 7px #ff2e21;
+        .live-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-right: 4px;
+            border-radius: 50%;
+            background: #00d9ff;
+            box-shadow: 0 0 7px #00d9ff
         }
         .timer-display {
-            min-width: 52px; overflow: hidden; color: #d89a90; font-size: 5.6px;
-            font-weight: 900; letter-spacing: .25px; text-align: right;
-            white-space: nowrap; text-overflow: ellipsis;
+            min-width: 52px;
+            color: #d8ccdf;
+            font-size: 5.6px;
+            font-weight: 900;
+            text-align: right;
+            white-space: nowrap
         }
-
         #history-overlay {
-            position: fixed; top: 118px; left: 12px; width: min(78vw, 300px);
-            max-height: 62vh; padding: 11px; overflow-y: auto; display: none;
-            z-index: 10010; color: var(--panel-text);
-            border: 1px solid rgba(255, 91, 62, .76); border-radius: 16px;
-            background: linear-gradient(180deg, rgba(66, 5, 9, .99), rgba(8, 3, 5, .99));
-            box-shadow: 0 0 0 3px rgba(78,0,0,.82), 0 0 20px rgba(255,35,20,.34), 0 18px 38px rgba(0,0,0,.70);
-            cursor: move; touch-action: none;
+            position: fixed;
+            top: 118px;
+            left: 12px;
+            width: min(78vw, 300px);
+            max-height: 62vh;
+            padding: 11px;
+            overflow-y: auto;
+            display: none;
+            z-index: 10010;
+            color: #fff;
+            border: 1px solid rgba(157, 84, 255, .76);
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(35, 8, 55, .99), rgba(5, 2, 12, .99));
+            box-shadow: 0 0 0 3px rgba(35, 0, 70, .82), 0 0 20px rgba(139, 44, 255, .4), 0 18px 38px rgba(0, 0, 0, .7);
+            cursor: move;
+            touch-action: none
         }
         .hist-table {
-            width: 100%; border-collapse: separate; border-spacing: 0 5px; color: #f6d2ca; font-size: 8px;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 5px;
+            color: #eadff1;
+            font-size: 8px
         }
         .hist-table th {
-            padding: 7px 4px; color: #fff; background: rgba(255, 56, 34, .20);
-            font-size: 7px; letter-spacing: .9px; text-transform: uppercase;
+            padding: 7px 4px;
+            color: #fff;
+            background: rgba(139, 44, 255, .2);
+            font-size: 7px;
+            letter-spacing: .9px;
+            text-transform: uppercase
         }
         .hist-table td {
-            padding: 7px 4px; background: rgba(255,255,255,.026);
-            border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04);
-            text-align: center; font-weight: 800;
+            padding: 7px 4px;
+            background: rgba(255, 255, 255, .026);
+            border-top: 1px solid rgba(255, 255, 255, .04);
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+            text-align: center;
+            font-weight: 800
         }
-
-        @media (max-width: 600px) {
-            :root { --panel-width: 202px; }
-            #c-panel { top: 110px; left: calc(50% - 101px); padding: 8px; border-radius: 19px; }
-            #c-panel::before { inset: 4px; border-radius: 14px; }
-            .panel-topbar { min-height: 32px; padding-bottom: 6px; }
-            .panel-name { font-size: 8px; letter-spacing: 1.55px; }
-            .panel-close { width: 29px; height: 29px; font-size: 21px; line-height: 24px; }
-            .screen-shell { padding-top: 7px; }
-            .result-layout { grid-template-columns: 52px 1fr; gap: 7px; min-height: 63px; }
-            .result-orb { width: 48px; height: 48px; font-size: 16px; }
-            .res-main { font-size: 22px; }
-            .primary-action { min-height: 37px; }
+        @media(max-width:600px) {
+            :root {
+                --panel-width: 202px
+            }
+            #c-panel {
+                top: 110px;
+                left: calc(50% - 101px);
+                padding: 8px;
+                border-radius: 19px
+            }
+            .panel-topbar {
+                min-height: 32px
+            }
+            .panel-name {
+                font-size: 8px
+            }
+            .panel-close {
+                width: 29px;
+                height: 29px;
+                font-size: 21px
+            }
+            .result-layout {
+                grid-template-columns: 52px 1fr;
+                gap: 7px;
+                min-height: 63px
+            }
+            .result-orb {
+                width: 48px;
+                height: 48px;
+                font-size: 16px
+            }
+            .res-main {
+                font-size: 22px
+            }
+            .primary-action {
+                min-height: 37px
+            }
         }
-        @media (max-width: 340px) {
-            :root { --panel-width: 188px; }
-            #c-panel { left: calc(50% - 94px); top: 92px; }
-            .panel-name { letter-spacing: 1.25px; }
-            .result-layout { grid-template-columns: 48px 1fr; gap: 6px; }
-            .result-orb { width: 44px; height: 44px; font-size: 14px; }
-            .res-main { font-size: 20px; }
+        @media(max-width:340px) {
+            :root {
+                --panel-width: 188px
+            }
+            #c-panel {
+                left: calc(50% - 94px);
+                top: 92px
+            }
+            .result-layout {
+                grid-template-columns: 48px 1fr
+            }
+            .result-orb {
+                width: 44px;
+                height: 44px;
+                font-size: 14px
+            }
+            .res-main {
+                font-size: 20px
+            }
         }
-        @media (max-height: 620px) {
-            #c-panel { top: 58px; max-height: calc(100vh - 68px); overflow-y: auto; scrollbar-width: none; }
-            #c-panel::-webkit-scrollbar { width: 0; height: 0; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        @media(max-height:620px) {
+            #c-panel {
+                top: 58px;
+                max-height: calc(100vh - 68px);
+                overflow-y: auto;
+                scrollbar-width: none
+            }
+            #c-panel::-webkit-scrollbar {
+                width: 0;
+                height: 0
+            }
         }
     </style>
 </head>
 <body>
-
     <iframe id="game-frame" src="https://deshclub2.com/#/register?invitationCode=15215140937"></iframe>
 
     <div id="c-panel">
-        <div class="panel-topbar">
-            <div class="panel-name">RC_AURA_HACK_PANEL</div>
-            <button class="panel-close" onclick="toggleMinimize(event)" aria-label="Hide panel">×</button>
-        </div>
+        <div class="panel-topbar"><div class="panel-name">RC_AURA_HACK_PANEL</div><button class="panel-close" onclick="toggleMinimize(event)">×</button></div>
 
-        <div id="login-screen" class="screen active-screen">
-            <div class="screen-shell">
+        <div id="login-screen" class="screen active-screen"><div class="screen-shell">
                 <div class="brand-title">RC AURA HACK VIP</div>
-                <p class="welcome-msg">আর সি সানি ভাইয়ের হ্যাক আপনাকে স্বাগতম। অবশ্যই সেভেন স্টেপ মেইনটেইন করে ট্রেড প্লেস করবেন। মিনিমাম তিন থেকে পাঁচশ টাকা ডিপোজিট করবেন, না হলে হ্যাক ভুলভাল সিগন্যাল দিতে পারে।</p>
+                <p class="welcome-msg">আর সি সানি ভাইয়ের হ্যাক আপনাকে স্বাগতম। অবশ্যই সেভেন স্টেপ মেইনটেইন করে ট্রেড প্লেস করবেন।</p>
                 <input type="password" id="pass" placeholder="VIP KEY">
                 <button class="btn" onclick="verifyPass()">UNLOCK ACCESS</button>
-                <button class="btn btn-tg" onclick="window.open('https://t.me/saniownerboos', '_blank')">JOIN TELEGRAM 🏆</button>
-            </div>
-        </div>
+                <button class="btn btn-tg" onclick="window.open('https://t.me/saniownerboos','_blank')">JOIN TELEGRAM 🏆</button>
+            </div></div>
 
-        <div id="server-screen" class="screen">
-            <div class="screen-shell">
+        <div id="server-screen" class="screen"><div class="screen-shell">
                 <div class="brand-title">CHOOSE SERVER</div>
                 <button class="btn" onclick="selectServer('1M')">WINGO 1 MIN</button>
                 <button class="btn" onclick="selectServer('30S')">WINGO 30 SEC</button>
-            </div>
-        </div>
+            </div></div>
 
-        <div id="engine-ui" class="screen">
-            <div class="screen-shell">
-                <div class="prediction-card">
-                    <div class="result-layout">
+        <div id="engine-ui" class="screen"><div class="screen-shell">
+                <div class="prediction-card"><div class="result-layout">
                         <div class="result-orb orb-default" id="result-orb">AI</div>
-                        <div class="result-copy">
-                            <span class="result-kicker">AI RESULT</span>
-                            <span class="res-main" id="res-bs">--</span>
-                            <div class="confidence-row">
-                                <span class="conf-label" id="conf-txt">CONFIDENCE: --%</span>
-                                <span class="confidence-track" id="conf-track" aria-hidden="true"></span>
-                            </div>
+                        <div class="result-copy"><span class="result-kicker">AI RESULT</span><span class="res-main" id="res-bs">--</span>
+                            <div class="confidence-row"><span class="conf-label" id="conf-txt">CONFIDENCE: --%</span><span class="confidence-track" id="conf-track"></span></div>
                         </div>
                     </div>
                     <span class="res-sub" id="res-color-num">COLLECTING DATA...</span>
                     <span class="pattern-reason" id="pattern-reason">⏳ Analyzing patterns...</span>
                 </div>
-
                 <button class="btn primary-action" onclick="toggleHistory()">VIEW HISTORY</button>
-                <div class="secondary-actions">
-                    <button class="btn" onclick="toggleMinimize(event)">HIDE PANEL</button>
-                </div>
-
-                <div class="server-footer">
-                    <span><i class="live-dot"></i>SERVER LIVE</span>
-                    <span class="timer-display" id="time-txt">00:00</span>
-                </div>
-            </div>
-        </div>
+                <div class="secondary-actions"><button class="btn" onclick="toggleMinimize(event)">HIDE PANEL</button></div>
+                <div class="server-footer"><span><i class="live-dot"></i>SERVER LIVE</span><span class="timer-display" id="time-txt">00:00</span></div>
+            </div></div>
     </div>
 
-    <div id="history-overlay">
-        <table class="hist-table">
-            <thead><tr><th>ID</th><th>PRED</th><th>RES</th><th>STATUS</th></tr></thead>
-            <tbody id="hist-body"></tbody>
-        </table>
-        <button class="btn" onclick="toggleHistory()" style="margin-top:10px; border-color:#ff4d38; color:#ffd3ca;">CLOSE</button>
-    </div>
+    <div id="history-overlay"><table class="hist-table"><thead><tr><th>ID</th><th>PRED</th><th>RES</th><th>STATUS</th></tr></thead><tbody id="hist-body"></tbody></table><button class="btn" onclick="toggleHistory()">CLOSE</button></div>
 
     <script>
-        // ============================================================
-        //  CONFIGURATION
-        // ============================================================
-        const KEY = "VIP";
-        const HISTORY_SIZE = 30;          // how many past draws to keep for pattern analysis
-        const MIN_HISTORY_FOR_PATTERN = 6; // minimum draws needed before pattern detection kicks in
+        const KEY = "VIP",
+            HISTORY_SIZE = 30;
+        let activeServer = "1M",
+            apiURL = "",
+            isRunning = false,
+            currentPrediction = null,
+            lastProcessedID = "",
+            historyCache = [],
+            lastFetchTime = 0;
+        const panel = document.getElementById("c-panel");
 
-        // ============================================================
-        //  STATE
-        // ============================================================
-        let activeServer = '1M';
-        let apiURL = "";
-        let isRunning = false;
-        let currentPrediction = null;
-        let lastProcessedID = "";
-        let historyCache = [];          // array of { issueNumber, number }
-        let lastFetchTime = 0;
+        function speak(text, times = 1) { if ("speechSynthesis" in window)
+                for (let i = 0; i < times; i++) { let u = new SpeechSynthesisUtterance(text);
+                    u.lang = "bn-BD";
+                    u.rate = .9;
+                    u.volume = 1;
+                    speechSynthesis.speak(u) } }
 
-        const panel = document.getElementById('c-panel');
+        function showScreen(id) { document.querySelectorAll(".screen").forEach(s => s.classList.remove("active-screen"));
+            document.getElementById(id).classList.add("active-screen") }
 
-        // ============================================================
-        //  SPEECH SYNTHESIS (Bengali)
-        // ============================================================
-        function speak(text, times = 1) {
-            if ('speechSynthesis' in window) {
-                for (let i = 0; i < times; i++) {
-                    const utter = new SpeechSynthesisUtterance(text);
-                    utter.lang = 'bn-BD';
-                    utter.rate = 0.9;
-                    utter.volume = 1;
-                    window.speechSynthesis.speak(utter);
-                }
-            }
-        }
+        function toggleMinimize(e) { if (e) e.stopPropagation();
+            panel.classList.toggle("minimized") }
+        panel.addEventListener("click", e => { if (panel.classList.contains("minimized")) toggleMinimize(e) });
 
-        // Welcome greeting on load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                speak("আর সি সানি ভাইয়ের হ্যাক আপনাকে স্বাগতম। অবশ্যই সেভেন স্টেপ মেইনটেইন করে ট্রেড প্লেস করবেন। মিনিমাম তিন থেকে পাঁচশ টাকা ডিপোজিট করবেন, না হলে হ্যাক ভুলভাল সিগন্যাল দিতে পারে।", 1);
-            }, 500);
-        });
+        function toggleHistory() { let h = document.getElementById("history-overlay");
+            h.style.display = h.style.display === "block" ? "none" : "block" }
 
-        // ============================================================
-        //  UI HELPERS
-        // ============================================================
-        function showScreen(id) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
-            document.getElementById(id).classList.add('active-screen');
-        }
-
-        function toggleMinimize(e) {
-            if (e) e.stopPropagation();
-            panel.classList.toggle('minimized');
-        }
-
-        panel.addEventListener('click', (e) => {
-            if (panel.classList.contains('minimized')) toggleMinimize(e);
-        });
-
-        function toggleHistory() {
-            const h = document.getElementById('history-overlay');
-            h.style.display = h.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // ============================================================
-        //  AUTH / SERVER SELECTION
-        // ============================================================
-        function verifyPass() {
-            if (document.getElementById('pass').value === KEY) {
-                showScreen('server-screen');
-            } else {
-                alert("ACCESS DENIED: WRONG KEY!");
-            }
-        }
+        function verifyPass() { if (document.getElementById("pass").value === KEY) showScreen("server-screen");
+            else alert("ACCESS DENIED: WRONG KEY!") }
 
         function selectServer(type) {
             activeServer = type;
-            const base = type === '1M'
-                ? "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json"
-                : "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json";
-            apiURL = base + "?pageNo=1&pageSize=" + HISTORY_SIZE;
-            showScreen('engine-ui');
+            apiURL = (type === "1M" ? "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json" :
+                "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json") + "?pageNo=1&pageSize=" + HISTORY_SIZE;
+            showScreen("engine-ui");
             isRunning = true;
             historyCache = [];
             lastProcessedID = "";
-            document.getElementById('hist-body').innerHTML = '';
-            // initial fetch + start engine
+            document.getElementById("hist-body").innerHTML = "";
             fetchHistoryAndAnalyze();
-            startEngine();
+            startEngine()
         }
 
-        // ============================================================
-        //  ORB HELPERS
-        // ============================================================
         function getOrbInfo(num) {
-            return num % 2 !== 0
-                ? { orbClass: 'orb-green', colorLabel: 'GREEN' }
-                : { orbClass: 'orb-red', colorLabel: 'RED' };
+            return Number(num) % 2 !== 0 ? { orbClass: "orb-green", colorLabel: "GREEN" } : { orbClass: "orb-red",
+                colorLabel: "RED" };
         }
 
         function updateOrbDisplay(num) {
-            const orb = document.getElementById('result-orb');
-            const { orbClass } = getOrbInfo(num);
-            orb.classList.remove('orb-default', 'orb-green', 'orb-red');
-            orb.classList.add(orbClass);
+            const orb = document.getElementById("result-orb"),
+                info = getOrbInfo(num);
+            orb.classList.remove("orb-default", "orb-green", "orb-red");
+            orb.classList.add(info.orbClass);
             orb.textContent = num;
         }
 
-        // ============================================================
-        //  CORE: FETCH HISTORY
-        // ============================================================
         async function fetchHistory() {
             try {
-                const res = await fetch(apiURL);
-                const json = await res.json();
+                const res = await fetch(apiURL),
+                    json = await res.json();
                 if (json && json.data && Array.isArray(json.data.list)) {
-                    // parse numbers as ints, sort by issueNumber (newest first)
-                    const list = json.data.list.map(item => ({
-                        issueNumber: String(item.issueNumber),
-                        number: parseInt(item.number, 10)
-                    }));
-                    // sort descending so newest first
-                    list.sort((a, b) => {
-                        if (a.issueNumber.length !== b.issueNumber.length)
-                            return b.issueNumber.length - a.issueNumber.length || b.issueNumber.localeCompare(a.issueNumber);
-                        return b.issueNumber.localeCompare(a.issueNumber);
-                    });
+                    let list = json.data.list.map(x => ({ issueNumber: String(x.issueNumber), number: parseInt(x.number,
+                            10) }));
+                    list.sort((a, b) => b.issueNumber.localeCompare(a.issueNumber));
                     historyCache = list;
                     return list;
                 }
-                return [];
-            } catch (e) {
-                console.warn("Fetch history error:", e);
-                return [];
-            }
+            } catch (e) { console.warn("Fetch history error:", e) }
+            return [];
         }
 
-        // ============================================================
-        //  PATTERN ANALYSIS ENGINE  (the "pettarn system")
-        // ============================================================
+        function toBS(n) { return n >= 5 ? "BIG" : "SMALL" }
 
-        /**
-         * Converts a history entry to 'BIG' (5-9) or 'SMALL' (0-4)
-         */
-        function toBS(num) {
-            return num >= 5 ? 'BIG' : 'SMALL';
-        }
-
-        /**
-         * Find repeating patterns in a sequence of symbols (BIG/SMALL)
-         * Returns { pattern, confidence } or null if no strong pattern found.
-         */
         function findRepeatingPattern(seq) {
             if (seq.length < 4) return null;
-            // Try pattern lengths 2..5
-            for (let patLen = 2; patLen <= Math.min(5, Math.floor(seq.length / 2)); patLen++) {
-                const lastPattern = seq.slice(-patLen);
-                let matches = 0;
-                let totalChecks = 0;
-                // Walk backwards in steps of patLen
-                for (let i = seq.length - patLen - 1; i >= 0; i -= patLen) {
-                    const window = seq.slice(i, i + patLen);
-                    if (window.length === patLen) {
-                        totalChecks++;
-                        let allMatch = true;
-                        for (let j = 0; j < patLen; j++) {
-                            if (window[j] !== lastPattern[j]) { allMatch = false; break; }
-                        }
-                        if (allMatch) matches++;
-                    }
-                }
-                if (totalChecks >= 2 && matches / totalChecks >= 0.7) {
-                    return {
-                        pattern: lastPattern,
-                        confidence: Math.round((matches / totalChecks) * 100)
-                    };
-                }
+            for (let len = 2; len <= Math.min(5, Math.floor(seq.length / 2)); len++) {
+                let p = seq.slice(-len),
+                    m = 0,
+                    t = 0;
+                for (let i = seq.length - len - 1; i >= 0; i -= len) { let w = seq.slice(i, i + len); if (w.length === len) { t++;
+                        if (w.every((v, j) => v === p[j])) m++ } }
+                if (t >= 2 && m / t >= .7) return { pattern: p, confidence: Math.round(m / t * 100) }
             }
-            return null;
+            return null
         }
 
-        /**
-         * Detect streaks at the end of the sequence.
-         * Returns { type, length }
-         */
         function detectStreak(seq) {
-            if (seq.length === 0) return { type: null, length: 0 };
-            const last = seq[seq.length - 1];
-            let len = 1;
-            for (let i = seq.length - 2; i >= 0; i--) {
-                if (seq[i] === last) len++;
-                else break;
-            }
-            return { type: last, length: len };
+            if (!seq.length) return { type: null, length: 0 };
+            let last = seq[seq.length - 1],
+                len = 1;
+            for (let i = seq.length - 2; i >= 0; i--) { if (seq[i] === last) len++;
+                else break }
+            return { type: last, length: len }
         }
 
-        /**
-         * Main pattern-based prediction.
-         * Returns { bs, num, confidence, reason }
-         */
+        function chooseNum(nums, bs) {
+            let c = nums.filter(n => toBS(n) === bs);
+            if (!c.length) return bs === "BIG" ? 7 : 2;
+            let f = {};
+            c.forEach(n => f[n] = (f[n] || 0) + 1);
+            return +Object.entries(f).sort((a, b) => b[1] - a[1])[0][0]
+        }
+
         function predictWithPattern(history) {
-            // If not enough history, fallback to random with a slight bias
-            if (!history || history.length < 2) {
-                const fallbackNum = Math.floor(Math.random() * 10);
-                const fallbackBS = toBS(fallbackNum);
-                return {
-                    bs: fallbackBS,
-                    num: fallbackNum,
-                    confidence: 45 + Math.floor(Math.random() * 20),
-                    reason: 'Insufficient data — using fallback'
-                };
-            }
-
-            // 1) Build BIG/SMALL sequence (oldest → newest)
-            const bsSeq = history.map(h => toBS(h.number));
-            // 2) Build number sequence
-            const numSeq = history.map(h => h.number);
-
-            // ----- PATTERN DETECTION -----
-            // A) Repeating pattern
-            const repPat = findRepeatingPattern(bsSeq);
-            if (repPat) {
-                // next symbol is the first element of the pattern (since pattern repeats)
-                const nextBS = repPat.pattern[0];
-                // pick a number within that category
-                const candidates = numSeq.filter(n => toBS(n) === nextBS);
-                let bestNum;
-                if (candidates.length > 0) {
-                    // most frequent number in that category
-                    const freq = {};
-                    candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
-                    let maxF = 0;
-                    for (const [n, f] of Object.entries(freq)) {
-                        if (f > maxF) { maxF = f;
-                            bestNum = parseInt(n); }
-                    }
-                } else {
-                    bestNum = nextBS === 'BIG' ? 7 : 2;
-                }
-                const conf = Math.min(65 + repPat.confidence * 0.25, 92);
-                return {
-                    bs: nextBS,
-                    num: bestNum,
-                    confidence: Math.round(conf),
-                    reason: `🔁 Repeating pattern [${repPat.pattern.join(' → ')}] (${repPat.confidence}% match)`
-                };
-            }
-
-            // B) Streak analysis
-            const streak = detectStreak(bsSeq);
-            if (streak.length >= 4) {
-                // long streak → predict opposite (mean reversion)
-                const nextBS = streak.type === 'BIG' ? 'SMALL' : 'BIG';
-                const candidates = numSeq.filter(n => toBS(n) === nextBS);
-                let bestNum;
-                if (candidates.length > 0) {
-                    const freq = {};
-                    candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
-                    let maxF = 0;
-                    for (const [n, f] of Object.entries(freq)) {
-                        if (f > maxF) { maxF = f;
-                            bestNum = parseInt(n); }
-                    }
-                } else {
-                    bestNum = nextBS === 'BIG' ? 7 : 2;
-                }
-                const conf = Math.min(58 + streak.length * 3, 90);
-                return {
-                    bs: nextBS,
-                    num: bestNum,
-                    confidence: Math.round(conf),
-                    reason: `📊 Streak of ${streak.length} ${streak.type}s → predicting opposite`
-                };
-            }
-
-            // C) Frequency bias in last 10–15 draws
-            const recent = bsSeq.slice(-15);
-            const bigCount = recent.filter(b => b === 'BIG').length;
-            const smallCount = recent.length - bigCount;
-            const diff = Math.abs(bigCount - smallCount);
-
-            if (recent.length >= 8 && diff >= 3) {
-                // strong bias → predict the less common one
-                const nextBS = bigCount > smallCount ? 'SMALL' : 'BIG';
-                const candidates = numSeq.filter(n => toBS(n) === nextBS);
-                let bestNum;
-                if (candidates.length > 0) {
-                    const freq = {};
-                    candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
-                    let maxF = 0;
-                    for (const [n, f] of Object.entries(freq)) {
-                        if (f > maxF) { maxF = f;
-                            bestNum = parseInt(n); }
-                    }
-                } else {
-                    bestNum = nextBS === 'BIG' ? 7 : 2;
-                }
-                const conf = Math.min(55 + diff * 2.5, 88);
-                return {
-                    bs: nextBS,
-                    num: bestNum,
-                    confidence: Math.round(conf),
-                    reason: `⚖️ Recent bias: ${bigCount}B / ${smallCount}S → predicting ${nextBS}`
-                };
-            }
-
-            // D) Default: use the most frequent outcome in the whole history with a slight trend
-            const totalBig = bsSeq.filter(b => b === 'BIG').length;
-            const totalSmall = bsSeq.length - totalBig;
-            const nextBS = totalBig >= totalSmall ? 'BIG' : 'SMALL';
-            // pick the most frequent number in that category
-            const candidates = numSeq.filter(n => toBS(n) === nextBS);
-            let bestNum;
-            if (candidates.length > 0) {
-                const freq = {};
-                candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
-                let maxF = 0;
-                for (const [n, f] of Object.entries(freq)) {
-                    if (f > maxF) { maxF = f;
-                        bestNum = parseInt(n); }
-                }
-            } else {
-                bestNum = nextBS === 'BIG' ? 7 : 2;
-            }
-            const baseConf = 50 + Math.min(Math.abs(totalBig - totalSmall) * 1.2, 30);
-            const conf = Math.min(baseConf, 82);
-            return {
-                bs: nextBS,
-                num: bestNum,
-                confidence: Math.round(conf),
-                reason: `📈 Overall frequency: ${totalBig}B / ${totalSmall}S → ${nextBS}`
-            };
+            if (!history || history.length < 2) { let n = Math.floor(Math.random() * 10); return { bs: toBS(n), num: n,
+                    confidence: 45 + Math.floor(Math.random() * 20), reason: "Insufficient data — using fallback" } }
+            let bsSeq = history.map(h => toBS(h.number)),
+                nums = history.map(h => h.number),
+                rep = findRepeatingPattern(bsSeq);
+            if (rep) { let bs = rep.pattern[0]; return { bs, num: chooseNum(nums, bs), confidence: Math.round(Math.min(
+                        65 + rep.confidence * .25, 92)), reason: `🔁 Repeating pattern [${rep.pattern.join(" → ")}] (${rep.confidence}% match)` } }
+            let st = detectStreak(bsSeq);
+            if (st.length >= 4) { let bs = st.type === "BIG" ? "SMALL" : "BIG"; return { bs, num: chooseNum(nums, bs),
+                    confidence: Math.round(Math.min(58 + st.length * 3, 90)),
+                    reason: `📊 Streak of ${st.length} ${st.type}s → predicting opposite` } }
+            let recent = bsSeq.slice(-15),
+                big = recent.filter(x => x === "BIG").length,
+                small = recent.length - big,
+                diff = Math.abs(big - small);
+            if (recent.length >= 8 && diff >= 3) { let bs = big > small ? "SMALL" : "BIG"; return { bs, num: chooseNum(nums,
+                        bs), confidence: Math.round(Math.min(55 + diff * 2.5, 88)),
+                    reason: `⚖️ Recent bias: ${big}B / ${small}S → predicting ${bs}` } }
+            let totalBig = bsSeq.filter(x => x === "BIG").length,
+                totalSmall = bsSeq.length - totalBig,
+                bs = totalBig >= totalSmall ? "BIG" : "SMALL";
+            return { bs, num: chooseNum(nums, bs), confidence: Math.round(Math.min(50 + Math.min(Math.abs(totalBig -
+                        totalSmall) * 1.2, 30), 82)), reason: `📈 Overall frequency: ${totalBig}B / ${totalSmall}S → ${bs}` }
         }
 
-        // ============================================================
-        //  ANALYZE & UPDATE UI
-        // ============================================================
         async function analyzeAndPredict() {
             if (!apiURL) return;
-
-            // Fetch fresh history
-            const history = await fetchHistory();
-            if (!history || history.length === 0) {
-                // fallback: generate a random prediction
-                const fallbackNum = Math.floor(Math.random() * 10);
-                const fallbackBS = toBS(fallbackNum);
-                currentPrediction = {
-                    id: 'fallback_' + Date.now(),
-                    bs: fallbackBS,
-                    num: fallbackNum,
-                    confidence: 40 + Math.floor(Math.random() * 20),
-                    reason: '⏳ No data from server, using fallback'
-                };
-                updateUI();
-                return;
-            }
-
-            // Use the pattern system to predict
-            const result = predictWithPattern(history);
-
-            // Determine the next issue number (increment the latest)
-            let nextId = 'unknown';
-            if (history.length > 0) {
-                try {
-                    const latest = history[0];
-                    const bigInt = BigInt(latest.issueNumber);
-                    nextId = (bigInt + 1n).toString();
-                } catch (e) {
-                    nextId = 'unknown';
-                }
-            }
-
-            currentPrediction = {
-                id: nextId,
-                bs: result.bs,
-                num: result.num,
-                confidence: result.confidence,
-                reason: result.reason
-            };
-
-            updateUI();
+            let history = await fetchHistory();
+            if (!history.length) { let n = Math.floor(Math.random() * 10);
+                currentPrediction = { id: "fallback_" + Date.now(), bs: toBS(n), num: n, confidence: 40 + Math.floor(Math
+                        .random() * 20), reason: "⏳ No data from server, using fallback" };
+                return updateUI() }
+            let r = predictWithPattern(history),
+                nextId = "unknown";
+            try { nextId = (BigInt(history[0].issueNumber) + 1n).toString() } catch (e) {}
+            currentPrediction = { id: nextId, bs: r.bs, num: r.num, confidence: r.confidence, reason: r.reason };
+            updateUI()
         }
 
         function updateUI() {
             if (!currentPrediction) return;
-
-            const p = currentPrediction;
-            document.getElementById('conf-txt').innerText = `CONFIDENCE: ${p.confidence}%`;
-            document.getElementById('res-bs').innerText = p.bs;
-            document.getElementById('res-color-num').innerText =
-                `${getOrbInfo(p.num).colorLabel} | NUMBER: ${p.num}`;
-            document.getElementById('pattern-reason').innerText = p.reason || '🧠 Pattern analysis active';
-
+            let p = currentPrediction,
+                info = getOrbInfo(p.num);
+            document.getElementById("conf-txt").innerText = `CONFIDENCE: ${p.confidence}%`;
+            document.getElementById("res-bs").innerText = p.bs;
+            document.getElementById("res-color-num").innerText = `${info.colorLabel} | NUMBER: ${p.num}`;
+            document.getElementById("pattern-reason").innerText = p.reason || "🧠 Pattern analysis active";
             updateOrbDisplay(p.num);
-
-            const confTrack = document.getElementById('conf-track');
-            confTrack.style.setProperty('--conf-width', p.confidence + '%');
-
-            // Speech (Bengali)
-            let speechText = '';
-            const serverLabel = activeServer === '1M' ? '১ মিনিট' : '৩০ সেকেন্ড';
-            if (p.bs === 'BIG') {
-                speechText = `উইঙ্গো ${serverLabel} মার্কেটে সবাই বিগ এ ট্রেড প্লেস করেন।`;
-            } else {
-                speechText = `উইঙ্গো ${serverLabel} মার্কেটে সবাই স্মল এ ট্রেড প্লেস করেন।`;
-            }
-            // also mention the number
-            speechText += ` সংখ্যা ${p.num}।`;
-            speak(speechText, 2);
+            document.getElementById("conf-track").style.setProperty("--conf-width", p.confidence + "%");
         }
 
-        // ============================================================
-        //  CHECK WIN / HISTORY
-        // ============================================================
         async function checkWin() {
             try {
-                const res = await fetch(apiURL);
-                const json = await res.json();
-                const list = json.data.list;
-                if (!list || list.length === 0) return;
-                const top = list[0];
-                const topNum = parseInt(top.number, 10);
-                const topId = String(top.issueNumber);
-
-                if (topId !== lastProcessedID && currentPrediction && topId === currentPrediction.id) {
-                    const actualBS = topNum >= 5 ? 'BIG' : 'SMALL';
-                    const isWin = (currentPrediction.bs === actualBS);
-                    const body = document.getElementById('hist-body');
-
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${topId.slice(-4)}</td>
-                        <td>${currentPrediction.bs}</td>
-                        <td>${topNum}</td>
-                        <td style="color:${isWin ? '#ffd700' : '#ff3333'}">${isWin ? '✅ JACKPOT' : '❌ MISS'}</td>
-                    `;
-                    body.prepend(row);
-                    lastProcessedID = topId;
-
-                    // If we won, speak celebration
-                    if (isWin) {
-                        speak('জ্যাকপট! আপনি জিতেছেন!', 2);
-                    }
+                let j = await (await fetch(apiURL)).json(),
+                    list = j.data.list;
+                if (!list || !list.length) return;
+                let top = list[0],
+                    num = parseInt(top.number, 10),
+                    id = String(top.issueNumber);
+                if (id !== lastProcessedID && currentPrediction && id === currentPrediction.id) {
+                    let win = currentPrediction.bs === toBS(num),
+                        row = document.createElement("tr");
+                    row.innerHTML =
+                        `<td>${id.slice(-4)}</td><td>${currentPrediction.bs}</td><td>${num}</td><td style="color:${win?"#00ff9d":"#ff3333"}">${win?"✅ JACKPOT":"❌ MISS"}</td>`;
+                    document.getElementById("hist-body").prepend(row);
+                    lastProcessedID = id;
+                    if (win) speak("জ্যাকপট! আপনি জিতেছেন!", 2)
                 }
-            } catch (e) {
-                // ignore
-            }
+            } catch (e) {}
         }
 
-        // ============================================================
-        //  ENGINE LOOP
-        // ============================================================
-        async function fetchHistoryAndAnalyze() {
-            await analyzeAndPredict();
-        }
+        function fetchHistoryAndAnalyze() { return analyzeAndPredict() }
 
         function startEngine() {
-            // Run every 1 second
             setInterval(async () => {
                 if (!isRunning) return;
-
-                // Update timer
-                const now = new Date();
-                const sec = now.getSeconds();
-                const rem = activeServer === '1M' ? (60 - sec) : (30 - (sec % 30));
-                document.getElementById('time-txt').innerText = `TIME LEFT: ${rem < 10 ? '0' + rem : rem}s`;
-
-                // Check for win (using latest result)
+                let sec = new Date().getSeconds(),
+                    rem = activeServer === "1M" ? 60 - sec : 30 - (sec % 30);
+                document.getElementById("time-txt").innerText = `TIME LEFT: ${String(rem).padStart(2,"0")}s`;
                 await checkWin();
-
-                // Re-analyze pattern & predict for the next round
-                // (but only if enough time has passed since last analysis)
-                const nowMs = Date.now();
-                if (nowMs - lastFetchTime > 2000) {
-                    await analyzeAndPredict();
-                    lastFetchTime = nowMs;
-                }
-            }, 1000);
+                let now = Date.now();
+                if (now - lastFetchTime > 2000) { await analyzeAndPredict();
+                    lastFetchTime = now }
+            }, 1000)
         }
 
-        // ============================================================
-        //  DRAG & DROP (panel + history)
-        // ============================================================
         function setupDrag(el) {
-            let offset = [0, 0],
-                isDown = false;
-            const start = (e) => {
-                isDown = true;
-                const cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                const cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-                offset = [el.offsetLeft - cx, el.offsetTop - cy];
-            };
-            const move = (e) => {
-                if (!isDown) return;
-                const cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                const cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-                el.style.left = (cx + offset[0]) + 'px';
-                el.style.top = (cy + offset[1]) + 'px';
-            };
-            el.addEventListener('mousedown', start);
-            el.addEventListener('touchstart', start, { passive: false });
-            document.addEventListener('mouseup', () => isDown = false);
-            document.addEventListener('touchend', () => isDown = false);
-            document.addEventListener('mousemove', move);
-            document.addEventListener('touchmove', (e) => {
-                if (isDown) { e.preventDefault();
-                    move(e); }
-            }, { passive: false });
+            let off = [0, 0],
+                down = false;
+            const start = e => { down = true; let x = e.type.includes("touch") ? e.touches[0].clientX : e.clientX,
+                    y = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
+                off = [el.offsetLeft - x, el.offsetTop - y] };
+            const move = e => { if (!down) return; let x = e.type.includes("touch") ? e.touches[0].clientX : e.clientX,
+                    y = e.type.includes("touch") ? e.touches[0].clientY : e.clientY;
+                el.style.left = x + off[0] + "px";
+                el.style.top = y + off[1] + "px" };
+            el.addEventListener("mousedown", start);
+            el.addEventListener("touchstart", start, { passive: false });
+            document.addEventListener("mouseup", () => down = false);
+            document.addEventListener("touchend", () => down = false);
+            document.addEventListener("mousemove", move);
+            document.addEventListener("touchmove", e => { if (down) { e.preventDefault();
+                    move(e) } }, { passive: false })
         }
-
         setupDrag(panel);
-        setupDrag(document.getElementById('history-overlay'));
-
-        // ============================================================
-        //  INIT
-        // ============================================================
-        // Pre-fetch once on load to warm up
-        window.addEventListener('load', () => {
-            // if we have a server selected already (from earlier), start
-            if (apiURL) {
-                fetchHistoryAndAnalyze();
-            }
-        });
-
-        console.log('✅ RC AURA HACK — Pattern System (pettarn) loaded.');
+        setupDrag(document.getElementById("history-overlay"));
+        window.addEventListener("load", () => setTimeout(() => speak("আর সি অরা হ্যাক আপনাকে স্বাগতম。", 1), 500));
+        console.log("RC AURA HACK — UI loaded.");
     </script>
-
 </body>
 </html>
