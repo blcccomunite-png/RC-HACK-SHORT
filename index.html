@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>RC AURA HACK</title>
@@ -20,80 +22,254 @@
         html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; background: #000; font-family: "Segoe UI", Arial, sans-serif; }
         iframe { display: block; width: 100%; height: 100%; border: 0; }
 
-        /* Reference-style compact floating panel */
-        #c-panel { position: fixed; top: 112px; left: calc(50% - 114px); width: var(--panel-width); min-height: 0; padding: 10px; color: var(--panel-text); text-align: center; cursor: move; touch-action: none; isolation: isolate; overflow: hidden; z-index: 10000; border: 1px solid rgba(255, 104, 70, .92); border-radius: 22px; background: radial-gradient(circle at 50% -12%, rgba(255, 86, 34, .23), transparent 34%), linear-gradient(180deg, rgba(86, 5, 10, .99) 0%, rgba(35, 2, 6, .995) 43%, rgba(5, 3, 5, .998) 100%); box-shadow: 0 0 0 3px rgba(68, 0, 3, .98), 0 0 0 5px rgba(255, 39, 24, .17), 0 0 22px rgba(255, 28, 18, .48), 0 18px 46px rgba(0, 0, 0, .74), inset 0 1px 0 rgba(255,255,255,.16), inset 0 0 30px rgba(198, 0, 0, .16); backdrop-filter: blur(13px) saturate(125%); -webkit-backdrop-filter: blur(13px) saturate(125%); }
-        #c-panel::before { content: ""; position: absolute; inset: 5px; z-index: -1; pointer-events: none; border: 1px solid rgba(255, 75, 49, .38); border-radius: 17px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.025), inset 0 0 18px rgba(255, 0, 0, .09); }
-        #c-panel::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: -12px; height: 24px; z-index: -2; border-radius: 50%; background: rgba(255, 40, 21, .34); filter: blur(12px); pointer-events: none; }
+        #c-panel {
+            position: fixed; top: 112px; left: calc(50% - 114px); width: var(--panel-width);
+            min-height: 0; padding: 10px; color: var(--panel-text); text-align: center;
+            cursor: move; touch-action: none; isolation: isolate; overflow: hidden;
+            z-index: 10000; border: 1px solid rgba(255, 104, 70, .92); border-radius: 22px;
+            background: radial-gradient(circle at 50% -12%, rgba(255, 86, 34, .23), transparent 34%),
+                        linear-gradient(180deg, rgba(86, 5, 10, .99) 0%, rgba(35, 2, 6, .995) 43%, rgba(5, 3, 5, .998) 100%);
+            box-shadow: 0 0 0 3px rgba(68, 0, 3, .98), 0 0 0 5px rgba(255, 39, 24, .17),
+                        0 0 22px rgba(255, 28, 18, .48), 0 18px 46px rgba(0, 0, 0, .74),
+                        inset 0 1px 0 rgba(255,255,255,.16), inset 0 0 30px rgba(198, 0, 0, .16);
+            backdrop-filter: blur(13px) saturate(125%);
+            -webkit-backdrop-filter: blur(13px) saturate(125%);
+        }
+        #c-panel::before {
+            content: ""; position: absolute; inset: 5px; z-index: -1; pointer-events: none;
+            border: 1px solid rgba(255, 75, 49, .38); border-radius: 17px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.025), inset 0 0 18px rgba(255, 0, 0, .09);
+        }
+        #c-panel::after {
+            content: ""; position: absolute; left: 8%; right: 8%; bottom: -12px; height: 24px;
+            z-index: -2; border-radius: 50%; background: rgba(255, 40, 21, .34); filter: blur(12px);
+            pointer-events: none;
+        }
 
-        .panel-topbar { display: flex; align-items: center; justify-content: space-between; min-height: 35px; padding: 0 1px 7px 5px; border-bottom: 1px solid rgba(255, 88, 62, .22); }
-        .panel-name { min-width: 0; overflow: hidden; color: #fff; font-size: 9px; line-height: 1; font-weight: 900; letter-spacing: 1.85px; white-space: nowrap; text-overflow: ellipsis; text-transform: uppercase; text-shadow: 0 0 9px rgba(255, 59, 39, .68); }
-        .panel-close { flex: 0 0 auto; width: 32px; height: 32px; padding: 0; border: 1px solid #ff9b3f; border-radius: 50%; color: #fff; background: linear-gradient(145deg, #ff4b20 0%, #f20b0b 52%, #b70000 100%); box-shadow: 0 0 0 3px rgba(255, 75, 32, .14), 0 0 12px rgba(255, 36, 22, .70), inset 0 1px 0 rgba(255,255,255,.34); font-size: 23px; line-height: 27px; font-weight: 300; cursor: pointer; }
+        .panel-topbar {
+            display: flex; align-items: center; justify-content: space-between; min-height: 35px;
+            padding: 0 1px 7px 5px; border-bottom: 1px solid rgba(255, 88, 62, .22);
+        }
+        .panel-name {
+            min-width: 0; overflow: hidden; color: #fff; font-size: 9px; line-height: 1;
+            font-weight: 900; letter-spacing: 1.85px; white-space: nowrap; text-overflow: ellipsis;
+            text-transform: uppercase; text-shadow: 0 0 9px rgba(255, 59, 39, .68);
+        }
+        .panel-close {
+            flex: 0 0 auto; width: 32px; height: 32px; padding: 0;
+            border: 1px solid #ff9b3f; border-radius: 50%; color: #fff;
+            background: linear-gradient(145deg, #ff4b20 0%, #f20b0b 52%, #b70000 100%);
+            box-shadow: 0 0 0 3px rgba(255, 75, 32, .14), 0 0 12px rgba(255, 36, 22, .70),
+                        inset 0 1px 0 rgba(255,255,255,.34);
+            font-size: 23px; line-height: 27px; font-weight: 300; cursor: pointer;
+        }
         .panel-close:active { transform: scale(.95); }
 
-        #c-panel.minimized { width: 46px !important; height: 46px !important; min-height: 46px !important; padding: 0 !important; display: grid !important; place-items: center; border-radius: 50% !important; background: linear-gradient(145deg, #ff6a30, #ed0909 55%, #740000); box-shadow: 0 0 0 3px rgba(255, 63, 34, .15), 0 0 18px rgba(255, 39, 23, .67), 0 10px 24px rgba(0,0,0,.65); }
+        #c-panel.minimized {
+            width: 46px !important; height: 46px !important; min-height: 46px !important;
+            padding: 0 !important; display: grid !important; place-items: center;
+            border-radius: 50% !important;
+            background: linear-gradient(145deg, #ff6a30, #ed0909 55%, #740000);
+            box-shadow: 0 0 0 3px rgba(255, 63, 34, .15), 0 0 18px rgba(255, 39, 23, .67), 0 10px 24px rgba(0,0,0,.65);
+        }
         #c-panel.minimized * { display: none !important; }
         #c-panel.minimized::before { display: none; }
-        #c-panel.minimized::after { content: "Z"; position: static; width: auto; height: auto; border-radius: 0; background: none; filter: none; color: #fff; font-size: 22px; font-weight: 900; letter-spacing: .8px; text-shadow: 0 0 12px rgba(255,255,255,0.9); }
+        #c-panel.minimized::after {
+            content: "Z"; position: static; width: auto; height: auto; border-radius: 0;
+            background: none; filter: none; color: #fff; font-size: 22px; font-weight: 900;
+            letter-spacing: .8px; text-shadow: 0 0 12px rgba(255,255,255,0.9);
+        }
 
         .screen { display: none; }
         .active-screen { display: block; }
         .screen-shell { padding: 8px 3px 2px; }
 
-.brand-title { display: inline-flex; align-items: center; justify-content: center; min-height: 22px; margin: 0 auto 7px; padding: 0 11px; border: 1px solid rgba(255, 67, 44, .43); border-radius: 999px; color: #ffd9d1; background: linear-gradient(180deg, rgba(71, 6, 9, .84), rgba(38, 2, 5, .88)); box-shadow: inset 0 0 10px rgba(255, 0, 0, .08); font-size: 7px; font-weight: 900; letter-spacing: 1.8px; text-transform: uppercase; }
-        input { width: 100%; min-height: 34px; margin: 4px 0 6px; padding: 8px 9px; border: 1px solid rgba(255, 73, 48, .48); border-radius: 9px; outline: none; color: #fff; background: linear-gradient(180deg, rgba(24, 3, 5, .96), rgba(9, 2, 3, .98)); box-shadow: inset 0 0 12px rgba(255, 0, 0, .065); font-size: 9px; font-weight: 800; text-align: center; letter-spacing: .8px; }
+        .brand-title {
+            display: inline-flex; align-items: center; justify-content: center; min-height: 22px;
+            margin: 0 auto 7px; padding: 0 11px; border: 1px solid rgba(255, 67, 44, .43);
+            border-radius: 999px; color: #ffd9d1;
+            background: linear-gradient(180deg, rgba(71, 6, 9, .84), rgba(38, 2, 5, .88));
+            box-shadow: inset 0 0 10px rgba(255, 0, 0, .08);
+            font-size: 7px; font-weight: 900; letter-spacing: 1.8px; text-transform: uppercase;
+        }
+        input {
+            width: 100%; min-height: 34px; margin: 4px 0 6px; padding: 8px 9px;
+            border: 1px solid rgba(255, 73, 48, .48); border-radius: 9px; outline: none; color: #fff;
+            background: linear-gradient(180deg, rgba(24, 3, 5, .96), rgba(9, 2, 3, .98));
+            box-shadow: inset 0 0 12px rgba(255, 0, 0, .065);
+            font-size: 9px; font-weight: 800; text-align: center; letter-spacing: .8px;
+        }
         input::placeholder { color: #9e655e; }
-        input:focus { border-color: #ff7048; box-shadow: 0 0 0 2px rgba(255, 62, 34, .11), inset 0 0 12px rgba(255,0,0,.08); }
+        input:focus {
+            border-color: #ff7048;
+            box-shadow: 0 0 0 2px rgba(255, 62, 34, .11), inset 0 0 12px rgba(255,0,0,.08);
+        }
 
-        .btn { width: 100%; min-height: 35px; margin-top: 6px; padding: 8px 9px; border: 1px solid rgba(255, 79, 52, .62); border-radius: 9px; color: #ffe1db; background: linear-gradient(180deg, rgba(67, 6, 9, .96), rgba(20, 2, 4, .99)); box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 7px 15px rgba(0,0,0,.27); cursor: pointer; font-size: 8px; font-weight: 900; letter-spacing: 1.05px; text-transform: uppercase; }
+        .btn {
+            width: 100%; min-height: 35px; margin-top: 6px; padding: 8px 9px;
+            border: 1px solid rgba(255, 79, 52, .62); border-radius: 9px; color: #ffe1db;
+            background: linear-gradient(180deg, rgba(67, 6, 9, .96), rgba(20, 2, 4, .99));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 7px 15px rgba(0,0,0,.27);
+            cursor: pointer; font-size: 8px; font-weight: 900; letter-spacing: 1.05px;
+            text-transform: uppercase;
+        }
         .btn:active { transform: translateY(1px) scale(.99); }
-        .btn-tg { color: #fff; border-color: rgba(255, 132, 68, .92); background: linear-gradient(135deg, #ff7c47 0%, #ff2b1d 44%, #d00000 100%); box-shadow: 0 0 14px rgba(255, 46, 26, .28), inset 0 1px 0 rgba(255,255,255,.25); }
+        .btn-tg {
+            color: #fff; border-color: rgba(255, 132, 68, .92);
+            background: linear-gradient(135deg, #ff7c47 0%, #ff2b1d 44%, #d00000 100%);
+            box-shadow: 0 0 14px rgba(255, 46, 26, .28), inset 0 1px 0 rgba(255,255,255,.25);
+        }
         .btn-tg::before { content: "⚡"; margin-right: 5px; }
 
-        /* Welcome message */
-        .welcome-msg { margin: 0 0 8px; padding: 6px 8px; border: 1px solid rgba(255, 67, 44, .3); border-radius: 8px; background: rgba(42, 3, 6, .6); color: #ffd9d1; font-size: 6.5px; font-weight: 700; line-height: 1.4; letter-spacing: .35px; text-align: center; }
+        .welcome-msg {
+            margin: 0 0 8px; padding: 6px 8px; border: 1px solid rgba(255, 67, 44, .3);
+            border-radius: 8px; background: rgba(42, 3, 6, .6); color: #ffd9d1;
+            font-size: 6.5px; font-weight: 700; line-height: 1.4; letter-spacing: .35px; text-align: center;
+        }
 
-        /* Engine view */
-        .prediction-card { position: relative; margin: 2px 0 7px; padding: 7px; overflow: hidden; border: 1px solid rgba(255, 65, 43, .42); border-radius: 13px; background: radial-gradient(circle at 50% 4%, rgba(255, 66, 32, .13), transparent 35%), linear-gradient(180deg, rgba(55, 4, 8, .94), rgba(12, 2, 4, .98)); box-shadow: inset 0 0 18px rgba(255,0,0,.075), 0 8px 18px rgba(0,0,0,.32); }
-        .prediction-card::before { content: ""; position: absolute; inset: 5px; pointer-events: none; border: 1px solid rgba(255,255,255,.025); border-radius: 9px; }
+        .prediction-card {
+            position: relative; margin: 2px 0 7px; padding: 7px; overflow: hidden;
+            border: 1px solid rgba(255, 65, 43, .42); border-radius: 13px;
+            background: radial-gradient(circle at 50% 4%, rgba(255, 66, 32, .13), transparent 35%),
+                        linear-gradient(180deg, rgba(55, 4, 8, .94), rgba(12, 2, 4, .98));
+            box-shadow: inset 0 0 18px rgba(255,0,0,.075), 0 8px 18px rgba(0,0,0,.32);
+        }
+        .prediction-card::before {
+            content: ""; position: absolute; inset: 5px; pointer-events: none;
+            border: 1px solid rgba(255,255,255,.025); border-radius: 9px;
+        }
 
-        .result-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 58px 1fr; gap: 8px; align-items: center; min-height: 69px; text-align: left; }
-        .result-orb { position: relative; width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; color: #fff; font-size: 18px; font-weight: 1000; text-shadow: 0 2px 4px rgba(0,0,0,.42); transition: background 0.35s ease; }
-        /* GREEN orb (odd numbers) */
-        .orb-green { background: radial-gradient(circle at 36% 28%, #f7ffff 0 9%, #b7fff0 10% 18%, #38e3b4 19% 34%, #05a979 35% 59%, #007052 60% 72%, #032a20 73% 100%); box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(20, 238, 166, .50), 0 0 16px rgba(255, 171, 25, .35); }
-        /* RED orb (even numbers) */
-        .orb-red { background: radial-gradient(circle at 36% 28%, #fff7f7 0 9%, #ffb7b7 10% 18%, #e33838 19% 34%, #a90505 35% 59%, #700000 60% 72%, #2a0303 73% 100%); box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(238, 38, 38, .55), 0 0 16px rgba(255, 80, 25, .40); }
-        .orb-default { background: radial-gradient(circle at 36% 28%, #f7ffff 0 9%, #b7fff0 10% 18%, #38e3b4 19% 34%, #05a979 35% 59%, #007052 60% 72%, #032a20 73% 100%); box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(20, 238, 166, .50), 0 0 16px rgba(255, 171, 25, .35); }
+        .result-layout {
+            position: relative; z-index: 1; display: grid; grid-template-columns: 58px 1fr;
+            gap: 8px; align-items: center; min-height: 69px; text-align: left;
+        }
+        .result-orb {
+            position: relative; width: 54px; height: 54px; display: grid; place-items: center;
+            border-radius: 50%; color: #fff; font-size: 18px; font-weight: 1000;
+            text-shadow: 0 2px 4px rgba(0,0,0,.42); transition: background 0.35s ease;
+        }
+        .orb-green {
+            background: radial-gradient(circle at 36% 28%, #f7ffff 0 9%, #b7fff0 10% 18%, #38e3b4 19% 34%, #05a979 35% 59%, #007052 60% 72%, #032a20 73% 100%);
+            box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(20, 238, 166, .50), 0 0 16px rgba(255, 171, 25, .35);
+        }
+        .orb-red {
+            background: radial-gradient(circle at 36% 28%, #fff7f7 0 9%, #ffb7b7 10% 18%, #e33838 19% 34%, #a90505 35% 59%, #700000 60% 72%, #2a0303 73% 100%);
+            box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(238, 38, 38, .55), 0 0 16px rgba(255, 80, 25, .40);
+        }
+        .orb-default {
+            background: radial-gradient(circle at 36% 28%, #f7ffff 0 9%, #b7fff0 10% 18%, #38e3b4 19% 34%, #05a979 35% 59%, #007052 60% 72%, #032a20 73% 100%);
+            box-shadow: 0 0 0 3px rgba(255,255,255,.055), 0 0 13px rgba(20, 238, 166, .50), 0 0 16px rgba(255, 171, 25, .35);
+        }
 
-        .result-orb::before, .result-orb::after { content: ""; position: absolute; inset: -4px; border: 2px solid rgba(255, 167, 31, .78); border-left-color: transparent; border-bottom-color: transparent; border-radius: 50%; transform: rotate(14deg); pointer-events: none; }
-        .result-orb::after { inset: 5px; border-width: 1px; border-color: rgba(255,255,255,.72); border-right-color: transparent; transform: rotate(-25deg); }
+        .result-orb::before, .result-orb::after {
+            content: ""; position: absolute; inset: -4px;
+            border: 2px solid rgba(255, 167, 31, .78); border-left-color: transparent;
+            border-bottom-color: transparent; border-radius: 50%; transform: rotate(14deg);
+            pointer-events: none;
+        }
+        .result-orb::after {
+            inset: 5px; border-width: 1px; border-color: rgba(255,255,255,.72);
+            border-right-color: transparent; transform: rotate(-25deg);
+        }
 
         .result-copy { min-width: 0; }
-        .result-kicker { display: block; margin-bottom: 2px; color: #98655f; font-size: 5.5px; font-weight: 700; letter-spacing: 2.45px; text-transform: uppercase; }
-        .res-main { display: block; color: #ff9c1f; font-size: 24px; line-height: 1; font-weight: 1000; letter-spacing: .5px; text-shadow: 0 0 11px rgba(255, 92, 24, .50), 0 2px 0 rgba(0,0,0,.42); }
+        .result-kicker {
+            display: block; margin-bottom: 2px; color: #98655f; font-size: 5.5px;
+            font-weight: 700; letter-spacing: 2.45px; text-transform: uppercase;
+        }
+        .res-main {
+            display: block; color: #ff9c1f; font-size: 24px; line-height: 1; font-weight: 1000;
+            letter-spacing: .5px; text-shadow: 0 0 11px rgba(255, 92, 24, .50), 0 2px 0 rgba(0,0,0,.42);
+        }
 
-        .confidence-row { display: flex; align-items: center; gap: 5px; margin-top: 6px; }
-        .conf-label { flex: 0 0 auto; color: #a9776e; font-size: 5.5px; font-weight: 800; letter-spacing: .75px; white-space: nowrap; text-transform: uppercase; }
-        .confidence-track { flex: 1 1 auto; height: 3px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); box-shadow: inset 0 1px 2px rgba(0,0,0,.72); }
-        .confidence-track::after { content: ""; display: block; width: var(--conf-width, 91%); height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ff2c1d, #ffa31c); box-shadow: 0 0 7px rgba(255, 89, 22, .80); transition: width 0.4s ease; }
+        .confidence-row {
+            display: flex; align-items: center; gap: 5px; margin-top: 6px;
+        }
+        .conf-label {
+            flex: 0 0 auto; color: #a9776e; font-size: 5.5px; font-weight: 800;
+            letter-spacing: .75px; white-space: nowrap; text-transform: uppercase;
+        }
+        .confidence-track {
+            flex: 1 1 auto; height: 3px; overflow: hidden; border-radius: 999px;
+            background: rgba(255,255,255,.09); box-shadow: inset 0 1px 2px rgba(0,0,0,.72);
+        }
+        .confidence-track::after {
+            content: ""; display: block; width: var(--conf-width, 91%); height: 100%;
+            border-radius: inherit; background: linear-gradient(90deg, #ff2c1d, #ffa31c);
+            box-shadow: 0 0 7px rgba(255, 89, 22, .80); transition: width 0.4s ease;
+        }
 
-        .res-sub { position: relative; z-index: 1; display: block; min-height: 18px; margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(255, 65, 42, .16); color: #c07769; font-size: 5.4px; line-height: 1.35; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; overflow-wrap: anywhere; }
-        .res-sub::before, .res-sub::after { content: "●"; margin: 0 5px; color: #ff3327; font-size: 5px; text-shadow: 0 0 6px #ff2d20; }
+        .res-sub {
+            position: relative; z-index: 1; display: block; min-height: 18px; margin-top: 5px;
+            padding-top: 5px; border-top: 1px solid rgba(255, 65, 42, .16);
+            color: #c07769; font-size: 5.4px; line-height: 1.35; font-weight: 900;
+            letter-spacing: 1.2px; text-align: center; text-transform: uppercase; overflow-wrap: anywhere;
+        }
+        .res-sub::before, .res-sub::after {
+            content: "●"; margin: 0 5px; color: #ff3327; font-size: 5px; text-shadow: 0 0 6px #ff2d20;
+        }
 
-        .primary-action { min-height: 40px; margin-top: 0; border: 0; border-radius: 8px; color: #fff; background: linear-gradient(115deg, rgba(255,255,255,.17) 0 17%, transparent 18% 100%), linear-gradient(135deg, #ff7c5b 0%, #ff2721 43%, #c90000 100%); box-shadow: 0 0 16px rgba(255, 36, 20, .36), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -7px 13px rgba(111,0,0,.17); font-size: 8.5px; letter-spacing: 1.55px; }
+        .pattern-reason {
+            display: block; margin-top: 4px; color: #ffaa77; font-size: 5.8px;
+            font-weight: 700; letter-spacing: 0.4px; text-transform: none;
+            background: rgba(255,255,255,.04); padding: 3px 6px; border-radius: 6px;
+            border: 1px solid rgba(255,150,80,.12);
+        }
+
+        .primary-action {
+            min-height: 40px; margin-top: 0; border: 0; border-radius: 8px; color: #fff;
+            background: linear-gradient(115deg, rgba(255,255,255,.17) 0 17%, transparent 18% 100%),
+                        linear-gradient(135deg, #ff7c5b 0%, #ff2721 43%, #c90000 100%);
+            box-shadow: 0 0 16px rgba(255, 36, 20, .36), inset 0 1px 0 rgba(255,255,255,.25),
+                        inset 0 -7px 13px rgba(111,0,0,.17);
+            font-size: 8.5px; letter-spacing: 1.55px;
+        }
         .primary-action::before { content: "⚡"; margin-right: 6px; }
 
         .secondary-actions { display: grid; grid-template-columns: 1fr; margin-top: 5px; }
-        .secondary-actions .btn { min-height: 25px; margin: 0; padding: 5px 7px; border-color: rgba(255, 67, 45, .32); background: rgba(31, 3, 5, .72); color: #ad7269; font-size: 6px; letter-spacing: 1px; box-shadow: none; }
+        .secondary-actions .btn {
+            min-height: 25px; margin: 0; padding: 5px 7px;
+            border-color: rgba(255, 67, 45, .32); background: rgba(31, 3, 5, .72);
+            color: #ad7269; font-size: 6px; letter-spacing: 1px; box-shadow: none;
+        }
 
-        .server-footer { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 25px; margin-top: 6px; padding: 6px 7px 2px; border-top: 1px solid rgba(255, 71, 47, .19); color: #b8756b; font-size: 5.7px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase; }
-        .server-footer .live-dot { display: inline-block; width: 5px; height: 5px; margin-right: 4px; border-radius: 50%; background: #ff3427; box-shadow: 0 0 7px #ff2e21; }
-        .timer-display { min-width: 52px; overflow: hidden; color: #d89a90; font-size: 5.6px; font-weight: 900; letter-spacing: .25px; text-align: right; white-space: nowrap; text-overflow: ellipsis; }
+        .server-footer {
+            display: flex; align-items: center; justify-content: space-between; gap: 6px;
+            min-height: 25px; margin-top: 6px; padding: 6px 7px 2px;
+            border-top: 1px solid rgba(255, 71, 47, .19); color: #b8756b;
+            font-size: 5.7px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase;
+        }
+        .server-footer .live-dot {
+            display: inline-block; width: 5px; height: 5px; margin-right: 4px;
+            border-radius: 50%; background: #ff3427; box-shadow: 0 0 7px #ff2e21;
+        }
+        .timer-display {
+            min-width: 52px; overflow: hidden; color: #d89a90; font-size: 5.6px;
+            font-weight: 900; letter-spacing: .25px; text-align: right;
+            white-space: nowrap; text-overflow: ellipsis;
+        }
 
-/* History popup */
-        #history-overlay { position: fixed; top: 118px; left: 12px; width: min(78vw, 300px); max-height: 62vh; padding: 11px; overflow-y: auto; display: none; z-index: 10010; color: var(--panel-text); border: 1px solid rgba(255, 91, 62, .76); border-radius: 16px; background: linear-gradient(180deg, rgba(66, 5, 9, .99), rgba(8, 3, 5, .99)); box-shadow: 0 0 0 3px rgba(78,0,0,.82), 0 0 20px rgba(255,35,20,.34), 0 18px 38px rgba(0,0,0,.70); cursor: move; touch-action: none; }
-        .hist-table { width: 100%; border-collapse: separate; border-spacing: 0 5px; color: #f6d2ca; font-size: 8px; }
-        .hist-table th { padding: 7px 4px; color: #fff; background: rgba(255, 56, 34, .20); font-size: 7px; letter-spacing: .9px; text-transform: uppercase; }
-        .hist-table td { padding: 7px 4px; background: rgba(255,255,255,.026); border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); text-align: center; font-weight: 800; }
+        #history-overlay {
+            position: fixed; top: 118px; left: 12px; width: min(78vw, 300px);
+            max-height: 62vh; padding: 11px; overflow-y: auto; display: none;
+            z-index: 10010; color: var(--panel-text);
+            border: 1px solid rgba(255, 91, 62, .76); border-radius: 16px;
+            background: linear-gradient(180deg, rgba(66, 5, 9, .99), rgba(8, 3, 5, .99));
+            box-shadow: 0 0 0 3px rgba(78,0,0,.82), 0 0 20px rgba(255,35,20,.34), 0 18px 38px rgba(0,0,0,.70);
+            cursor: move; touch-action: none;
+        }
+        .hist-table {
+            width: 100%; border-collapse: separate; border-spacing: 0 5px; color: #f6d2ca; font-size: 8px;
+        }
+        .hist-table th {
+            padding: 7px 4px; color: #fff; background: rgba(255, 56, 34, .20);
+            font-size: 7px; letter-spacing: .9px; text-transform: uppercase;
+        }
+        .hist-table td {
+            padding: 7px 4px; background: rgba(255,255,255,.026);
+            border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04);
+            text-align: center; font-weight: 800;
+        }
 
         @media (max-width: 600px) {
             :root { --panel-width: 202px; }
@@ -108,7 +284,6 @@
             .res-main { font-size: 22px; }
             .primary-action { min-height: 37px; }
         }
-
         @media (max-width: 340px) {
             :root { --panel-width: 188px; }
             #c-panel { left: calc(50% - 94px); top: 92px; }
@@ -117,12 +292,10 @@
             .result-orb { width: 44px; height: 44px; font-size: 14px; }
             .res-main { font-size: 20px; }
         }
-
         @media (max-height: 620px) {
             #c-panel { top: 58px; max-height: calc(100vh - 68px); overflow-y: auto; scrollbar-width: none; }
             #c-panel::-webkit-scrollbar { width: 0; height: 0; }
         }
-
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
         }
@@ -156,7 +329,7 @@
             </div>
         </div>
 
-<div id="engine-ui" class="screen">
+        <div id="engine-ui" class="screen">
             <div class="screen-shell">
                 <div class="prediction-card">
                     <div class="result-layout">
@@ -171,6 +344,7 @@
                         </div>
                     </div>
                     <span class="res-sub" id="res-color-num">COLLECTING DATA...</span>
+                    <span class="pattern-reason" id="pattern-reason">⏳ Analyzing patterns...</span>
                 </div>
 
                 <button class="btn primary-action" onclick="toggleHistory()">VIEW HISTORY</button>
@@ -188,240 +362,539 @@
 
     <div id="history-overlay">
         <table class="hist-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>PRED</th>
-                    <th>RES</th>
-                    <th>STATUS</th>
-                </tr>
-            </thead>
+            <thead><tr><th>ID</th><th>PRED</th><th>RES</th><th>STATUS</th></tr></thead>
             <tbody id="hist-body"></tbody>
         </table>
         <button class="btn" onclick="toggleHistory()" style="margin-top:10px; border-color:#ff4d38; color:#ffd3ca;">CLOSE</button>
     </div>
 
-<script>
-    // === CONFIGURATION ===
-    const KEY = "VIP";
+    <script>
+        // ============================================================
+        //  CONFIGURATION
+        // ============================================================
+        const KEY = "VIP";
+        const HISTORY_SIZE = 30;          // how many past draws to keep for pattern analysis
+        const MIN_HISTORY_FOR_PATTERN = 6; // minimum draws needed before pattern detection kicks in
 
-    // === STATE VARIABLES ===
-    let activeServer = '1M';
-    let apiURL = "";
-    let isRunning = false;
-    let currentPrediction = null;
-    let lastProcessedID = "";
-    const panel = document.getElementById('c-panel');
+        // ============================================================
+        //  STATE
+        // ============================================================
+        let activeServer = '1M';
+        let apiURL = "";
+        let isRunning = false;
+        let currentPrediction = null;
+        let lastProcessedID = "";
+        let historyCache = [];          // array of { issueNumber, number }
+        let lastFetchTime = 0;
 
-    // === SPEECH SYNTHESIS ===
-    function speak(text, times = 1) {
-        if ('speechSynthesis' in window) {
-            for (let i = 0; i < times; i++) {
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.lang = 'bn-BD'; // Bengali
-                utter.rate = 0.9;
-                utter.volume = 1;
-                window.speechSynthesis.speak(utter);
+        const panel = document.getElementById('c-panel');
+
+        // ============================================================
+        //  SPEECH SYNTHESIS (Bengali)
+        // ============================================================
+        function speak(text, times = 1) {
+            if ('speechSynthesis' in window) {
+                for (let i = 0; i < times; i++) {
+                    const utter = new SpeechSynthesisUtterance(text);
+                    utter.lang = 'bn-BD';
+                    utter.rate = 0.9;
+                    utter.volume = 1;
+                    window.speechSynthesis.speak(utter);
+                }
             }
         }
-    }
 
-    // Welcome message when login screen is visible
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            speak("আর সি সানি ভাইয়ের হ্যাক আপনাকে স্বাগতম। অবশ্যই সেভেন স্টেপ মেইনটেইন করে ট্রেড প্লেস করবেন। মিনিমাম তিন থেকে পাঁচশ টাকা ডিপোজিট করবেন, না হলে হ্যাক ভুলভাল সিগন্যাল দিতে পারে।", 1);
-        }, 500);
-    });
+        // Welcome greeting on load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                speak("আর সি সানি ভাইয়ের হ্যাক আপনাকে স্বাগতম। অবশ্যই সেভেন স্টেপ মেইনটেইন করে ট্রেড প্লেস করবেন। মিনিমাম তিন থেকে পাঁচশ টাকা ডিপোজিট করবেন, না হলে হ্যাক ভুলভাল সিগন্যাল দিতে পারে।", 1);
+            }, 500);
+        });
 
-    // === CORE FUNCTIONS ===
-    function verifyPass() {
-        if(document.getElementById('pass').value === KEY) {
-            showScreen('server-screen');
-        } else {
-            alert("ACCESS DENIED: WRONG KEY!");
+        // ============================================================
+        //  UI HELPERS
+        // ============================================================
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
+            document.getElementById(id).classList.add('active-screen');
         }
-    }
 
-    function selectServer(type) {
-        activeServer = type;
-        const base = type === '1M'
-            ? "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json"
-            : "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json";
-
-        apiURL = base + "?pageNo=1&pageSize=10";
-        showScreen('engine-ui');
-        isRunning = true;
-        startEngine();
-    }
-
-    function showScreen(id) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
-        document.getElementById(id).classList.add('active-screen');
-    }
-
-    // === UI INTERACTIONS ===
-    function toggleMinimize(e) {
-        if(e) e.stopPropagation();
-        panel.classList.toggle('minimized');
-    }
-
-    panel.addEventListener('click', (e) => {
-        if(panel.classList.contains('minimized')) toggleMinimize(e);
-    });
-
-    function toggleHistory() {
-        const h = document.getElementById('history-overlay');
-        h.style.display = h.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function getOrbInfo(num) {
-        if (num % 2 !== 0) {
-            return { orbClass: 'orb-green', colorLabel: 'GREEN' };
-        } else {
-            return { orbClass: 'orb-red', colorLabel: 'RED' };
+        function toggleMinimize(e) {
+            if (e) e.stopPropagation();
+            panel.classList.toggle('minimized');
         }
-    }
 
-    function updateOrbDisplay(num) {
-        const orb = document.getElementById('result-orb');
-        const { orbClass } = getOrbInfo(num);
-        orb.classList.remove('orb-default', 'orb-green', 'orb-red');
-        orb.classList.add(orbClass);
-        orb.textContent = num;
-    }
+        panel.addEventListener('click', (e) => {
+            if (panel.classList.contains('minimized')) toggleMinimize(e);
+        });
 
-    async function analyzeLogic() {
-        try {
-            const res = await fetch(apiURL);
-            const json = await res.json();
-            const list = json.data.list;
-            const targetID = (BigInt(list[0].issueNumber) + 1n).toString();
+        function toggleHistory() {
+            const h = document.getElementById('history-overlay');
+            h.style.display = h.style.display === 'block' ? 'none' : 'block';
+        }
 
-            if (currentPrediction && currentPrediction.id === targetID) return;
-
-            const pBS = Math.random() > 0.5 ? "BIG" : "SMALL";
-            let bestN;
-            if (pBS === "BIG") {
-                bestN = Math.floor(Math.random() * 5) + 5;
+        // ============================================================
+        //  AUTH / SERVER SELECTION
+        // ============================================================
+        function verifyPass() {
+            if (document.getElementById('pass').value === KEY) {
+                showScreen('server-screen');
             } else {
-                bestN = Math.floor(Math.random() * 5);
+                alert("ACCESS DENIED: WRONG KEY!");
+            }
+        }
+
+        function selectServer(type) {
+            activeServer = type;
+            const base = type === '1M'
+                ? "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json"
+                : "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json";
+            apiURL = base + "?pageNo=1&pageSize=" + HISTORY_SIZE;
+            showScreen('engine-ui');
+            isRunning = true;
+            historyCache = [];
+            lastProcessedID = "";
+            document.getElementById('hist-body').innerHTML = '';
+            // initial fetch + start engine
+            fetchHistoryAndAnalyze();
+            startEngine();
+        }
+
+        // ============================================================
+        //  ORB HELPERS
+        // ============================================================
+        function getOrbInfo(num) {
+            return num % 2 !== 0
+                ? { orbClass: 'orb-green', colorLabel: 'GREEN' }
+                : { orbClass: 'orb-red', colorLabel: 'RED' };
+        }
+
+        function updateOrbDisplay(num) {
+            const orb = document.getElementById('result-orb');
+            const { orbClass } = getOrbInfo(num);
+            orb.classList.remove('orb-default', 'orb-green', 'orb-red');
+            orb.classList.add(orbClass);
+            orb.textContent = num;
+        }
+
+        // ============================================================
+        //  CORE: FETCH HISTORY
+        // ============================================================
+        async function fetchHistory() {
+            try {
+                const res = await fetch(apiURL);
+                const json = await res.json();
+                if (json && json.data && Array.isArray(json.data.list)) {
+                    // parse numbers as ints, sort by issueNumber (newest first)
+                    const list = json.data.list.map(item => ({
+                        issueNumber: String(item.issueNumber),
+                        number: parseInt(item.number, 10)
+                    }));
+                    // sort descending so newest first
+                    list.sort((a, b) => {
+                        if (a.issueNumber.length !== b.issueNumber.length)
+                            return b.issueNumber.length - a.issueNumber.length || b.issueNumber.localeCompare(a.issueNumber);
+                        return b.issueNumber.localeCompare(a.issueNumber);
+                    });
+                    historyCache = list;
+                    return list;
+                }
+                return [];
+            } catch (e) {
+                console.warn("Fetch history error:", e);
+                return [];
+            }
+        }
+
+        // ============================================================
+        //  PATTERN ANALYSIS ENGINE  (the "pettarn system")
+        // ============================================================
+
+        /**
+         * Converts a history entry to 'BIG' (5-9) or 'SMALL' (0-4)
+         */
+        function toBS(num) {
+            return num >= 5 ? 'BIG' : 'SMALL';
+        }
+
+        /**
+         * Find repeating patterns in a sequence of symbols (BIG/SMALL)
+         * Returns { pattern, confidence } or null if no strong pattern found.
+         */
+        function findRepeatingPattern(seq) {
+            if (seq.length < 4) return null;
+            // Try pattern lengths 2..5
+            for (let patLen = 2; patLen <= Math.min(5, Math.floor(seq.length / 2)); patLen++) {
+                const lastPattern = seq.slice(-patLen);
+                let matches = 0;
+                let totalChecks = 0;
+                // Walk backwards in steps of patLen
+                for (let i = seq.length - patLen - 1; i >= 0; i -= patLen) {
+                    const window = seq.slice(i, i + patLen);
+                    if (window.length === patLen) {
+                        totalChecks++;
+                        let allMatch = true;
+                        for (let j = 0; j < patLen; j++) {
+                            if (window[j] !== lastPattern[j]) { allMatch = false; break; }
+                        }
+                        if (allMatch) matches++;
+                    }
+                }
+                if (totalChecks >= 2 && matches / totalChecks >= 0.7) {
+                    return {
+                        pattern: lastPattern,
+                        confidence: Math.round((matches / totalChecks) * 100)
+                    };
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Detect streaks at the end of the sequence.
+         * Returns { type, length }
+         */
+        function detectStreak(seq) {
+            if (seq.length === 0) return { type: null, length: 0 };
+            const last = seq[seq.length - 1];
+            let len = 1;
+            for (let i = seq.length - 2; i >= 0; i--) {
+                if (seq[i] === last) len++;
+                else break;
+            }
+            return { type: last, length: len };
+        }
+
+        /**
+         * Main pattern-based prediction.
+         * Returns { bs, num, confidence, reason }
+         */
+        function predictWithPattern(history) {
+            // If not enough history, fallback to random with a slight bias
+            if (!history || history.length < 2) {
+                const fallbackNum = Math.floor(Math.random() * 10);
+                const fallbackBS = toBS(fallbackNum);
+                return {
+                    bs: fallbackBS,
+                    num: fallbackNum,
+                    confidence: 45 + Math.floor(Math.random() * 20),
+                    reason: 'Insufficient data — using fallback'
+                };
             }
 
-            const { colorLabel } = getOrbInfo(bestN);
-            const conf = Math.floor(Math.random() * 15) + 84;
+            // 1) Build BIG/SMALL sequence (oldest → newest)
+            const bsSeq = history.map(h => toBS(h.number));
+            // 2) Build number sequence
+            const numSeq = history.map(h => h.number);
+
+            // ----- PATTERN DETECTION -----
+            // A) Repeating pattern
+            const repPat = findRepeatingPattern(bsSeq);
+            if (repPat) {
+                // next symbol is the first element of the pattern (since pattern repeats)
+                const nextBS = repPat.pattern[0];
+                // pick a number within that category
+                const candidates = numSeq.filter(n => toBS(n) === nextBS);
+                let bestNum;
+                if (candidates.length > 0) {
+                    // most frequent number in that category
+                    const freq = {};
+                    candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
+                    let maxF = 0;
+                    for (const [n, f] of Object.entries(freq)) {
+                        if (f > maxF) { maxF = f;
+                            bestNum = parseInt(n); }
+                    }
+                } else {
+                    bestNum = nextBS === 'BIG' ? 7 : 2;
+                }
+                const conf = Math.min(65 + repPat.confidence * 0.25, 92);
+                return {
+                    bs: nextBS,
+                    num: bestNum,
+                    confidence: Math.round(conf),
+                    reason: `🔁 Repeating pattern [${repPat.pattern.join(' → ')}] (${repPat.confidence}% match)`
+                };
+            }
+
+            // B) Streak analysis
+            const streak = detectStreak(bsSeq);
+            if (streak.length >= 4) {
+                // long streak → predict opposite (mean reversion)
+                const nextBS = streak.type === 'BIG' ? 'SMALL' : 'BIG';
+                const candidates = numSeq.filter(n => toBS(n) === nextBS);
+                let bestNum;
+                if (candidates.length > 0) {
+                    const freq = {};
+                    candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
+                    let maxF = 0;
+                    for (const [n, f] of Object.entries(freq)) {
+                        if (f > maxF) { maxF = f;
+                            bestNum = parseInt(n); }
+                    }
+                } else {
+                    bestNum = nextBS === 'BIG' ? 7 : 2;
+                }
+                const conf = Math.min(58 + streak.length * 3, 90);
+                return {
+                    bs: nextBS,
+                    num: bestNum,
+                    confidence: Math.round(conf),
+                    reason: `📊 Streak of ${streak.length} ${streak.type}s → predicting opposite`
+                };
+            }
+
+            // C) Frequency bias in last 10–15 draws
+            const recent = bsSeq.slice(-15);
+            const bigCount = recent.filter(b => b === 'BIG').length;
+            const smallCount = recent.length - bigCount;
+            const diff = Math.abs(bigCount - smallCount);
+
+            if (recent.length >= 8 && diff >= 3) {
+                // strong bias → predict the less common one
+                const nextBS = bigCount > smallCount ? 'SMALL' : 'BIG';
+                const candidates = numSeq.filter(n => toBS(n) === nextBS);
+                let bestNum;
+                if (candidates.length > 0) {
+                    const freq = {};
+                    candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
+                    let maxF = 0;
+                    for (const [n, f] of Object.entries(freq)) {
+                        if (f > maxF) { maxF = f;
+                            bestNum = parseInt(n); }
+                    }
+                } else {
+                    bestNum = nextBS === 'BIG' ? 7 : 2;
+                }
+                const conf = Math.min(55 + diff * 2.5, 88);
+                return {
+                    bs: nextBS,
+                    num: bestNum,
+                    confidence: Math.round(conf),
+                    reason: `⚖️ Recent bias: ${bigCount}B / ${smallCount}S → predicting ${nextBS}`
+                };
+            }
+
+            // D) Default: use the most frequent outcome in the whole history with a slight trend
+            const totalBig = bsSeq.filter(b => b === 'BIG').length;
+            const totalSmall = bsSeq.length - totalBig;
+            const nextBS = totalBig >= totalSmall ? 'BIG' : 'SMALL';
+            // pick the most frequent number in that category
+            const candidates = numSeq.filter(n => toBS(n) === nextBS);
+            let bestNum;
+            if (candidates.length > 0) {
+                const freq = {};
+                candidates.forEach(n => freq[n] = (freq[n] || 0) + 1);
+                let maxF = 0;
+                for (const [n, f] of Object.entries(freq)) {
+                    if (f > maxF) { maxF = f;
+                        bestNum = parseInt(n); }
+                }
+            } else {
+                bestNum = nextBS === 'BIG' ? 7 : 2;
+            }
+            const baseConf = 50 + Math.min(Math.abs(totalBig - totalSmall) * 1.2, 30);
+            const conf = Math.min(baseConf, 82);
+            return {
+                bs: nextBS,
+                num: bestNum,
+                confidence: Math.round(conf),
+                reason: `📈 Overall frequency: ${totalBig}B / ${totalSmall}S → ${nextBS}`
+            };
+        }
+
+        // ============================================================
+        //  ANALYZE & UPDATE UI
+        // ============================================================
+        async function analyzeAndPredict() {
+            if (!apiURL) return;
+
+            // Fetch fresh history
+            const history = await fetchHistory();
+            if (!history || history.length === 0) {
+                // fallback: generate a random prediction
+                const fallbackNum = Math.floor(Math.random() * 10);
+                const fallbackBS = toBS(fallbackNum);
+                currentPrediction = {
+                    id: 'fallback_' + Date.now(),
+                    bs: fallbackBS,
+                    num: fallbackNum,
+                    confidence: 40 + Math.floor(Math.random() * 20),
+                    reason: '⏳ No data from server, using fallback'
+                };
+                updateUI();
+                return;
+            }
+
+            // Use the pattern system to predict
+            const result = predictWithPattern(history);
+
+            // Determine the next issue number (increment the latest)
+            let nextId = 'unknown';
+            if (history.length > 0) {
+                try {
+                    const latest = history[0];
+                    const bigInt = BigInt(latest.issueNumber);
+                    nextId = (bigInt + 1n).toString();
+                } catch (e) {
+                    nextId = 'unknown';
+                }
+            }
 
             currentPrediction = {
-                id: targetID,
-                bs: pBS,
-                color: colorLabel,
-                num: bestN,
-                conf: conf
+                id: nextId,
+                bs: result.bs,
+                num: result.num,
+                confidence: result.confidence,
+                reason: result.reason
             };
 
             updateUI();
-        } catch (e) {
-            console.error("Error analyzing logic", e);
         }
-    }
 
-    function updateUI() {
-        if(!currentPrediction) return;
+        function updateUI() {
+            if (!currentPrediction) return;
 
-        document.getElementById('conf-txt').innerText = `CONFIDENCE: ${currentPrediction.conf}%`;
-        document.getElementById('res-bs').innerText = currentPrediction.bs;
-        document.getElementById('res-color-num').innerText = `${currentPrediction.color} | NUMBER: ${currentPrediction.num}`;
+            const p = currentPrediction;
+            document.getElementById('conf-txt').innerText = `CONFIDENCE: ${p.confidence}%`;
+            document.getElementById('res-bs').innerText = p.bs;
+            document.getElementById('res-color-num').innerText =
+                `${getOrbInfo(p.num).colorLabel} | NUMBER: ${p.num}`;
+            document.getElementById('pattern-reason').innerText = p.reason || '🧠 Pattern analysis active';
 
-        updateOrbDisplay(currentPrediction.num);
+            updateOrbDisplay(p.num);
 
-        const confTrack = document.getElementById('conf-track');
-        confTrack.style.setProperty('--conf-width', currentPrediction.conf + '%');
+            const confTrack = document.getElementById('conf-track');
+            confTrack.style.setProperty('--conf-width', p.confidence + '%');
 
-        let speechText = "";
-        if (activeServer === '30S') {
-            speechText = currentPrediction.bs === "BIG" 
-                ? "উইঙ্গো ৩০ সেকেন্ড মার্কেটে সবাই বিগ এ ট্রেড প্লেস করেন।" 
-                : "উইঙ্গো ৩০ সেকেন্ড মার্কেটে সবাই স্মল এ ট্রেড প্লেস করেন।";
-        } else if (activeServer === '1M') {
-            speechText = currentPrediction.bs === "BIG"
-                ? "উইঙ্গো ১ মিনিট মার্কেটে সবাই বিগ এ ট্রেড প্লেস করেন।"
-                : "উইঙ্গো ১ মিনিট মার্কেটে সবাই স্মল এ ট্রেড প্লেস করেন।";
-        }
-        if (speechText) {
+            // Speech (Bengali)
+            let speechText = '';
+            const serverLabel = activeServer === '1M' ? '১ মিনিট' : '৩০ সেকেন্ড';
+            if (p.bs === 'BIG') {
+                speechText = `উইঙ্গো ${serverLabel} মার্কেটে সবাই বিগ এ ট্রেড প্লেস করেন।`;
+            } else {
+                speechText = `উইঙ্গো ${serverLabel} মার্কেটে সবাই স্মল এ ট্রেড প্লেস করেন।`;
+            }
+            // also mention the number
+            speechText += ` সংখ্যা ${p.num}।`;
             speak(speechText, 2);
         }
-    }
 
-    async function checkWin() {
-        try {
-            const res = await fetch(apiURL);
-            const json = await res.json();
-            const top = json.data.list[0];
+        // ============================================================
+        //  CHECK WIN / HISTORY
+        // ============================================================
+        async function checkWin() {
+            try {
+                const res = await fetch(apiURL);
+                const json = await res.json();
+                const list = json.data.list;
+                if (!list || list.length === 0) return;
+                const top = list[0];
+                const topNum = parseInt(top.number, 10);
+                const topId = String(top.issueNumber);
 
-            if (top.issueNumber !== lastProcessedID && currentPrediction && BigInt(top.issueNumber) >= BigInt(currentPrediction.id)) {
-                const actNum = parseInt(top.number);
-                const actBS = actNum >= 5 ? "BIG" : "SMALL";
-                const isWin = (currentPrediction.bs === actBS);
-                const body = document.getElementById('hist-body');
+                if (topId !== lastProcessedID && currentPrediction && topId === currentPrediction.id) {
+                    const actualBS = topNum >= 5 ? 'BIG' : 'SMALL';
+                    const isWin = (currentPrediction.bs === actualBS);
+                    const body = document.getElementById('hist-body');
 
-                const newRow = 
-                    `<tr>
-                        <td>${top.issueNumber.slice(-4)}</td>
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${topId.slice(-4)}</td>
                         <td>${currentPrediction.bs}</td>
-                        <td>${actNum}</td>
-                        <td style="color:${isWin ? '#ffd700' : '#ff3333'}">${isWin ? 'JACKPOT' : 'MISS'}</td>
-                    </tr>`;
-                body.insertAdjacentHTML('afterbegin', newRow);
-                lastProcessedID = top.issueNumber;
+                        <td>${topNum}</td>
+                        <td style="color:${isWin ? '#ffd700' : '#ff3333'}">${isWin ? '✅ JACKPOT' : '❌ MISS'}</td>
+                    `;
+                    body.prepend(row);
+                    lastProcessedID = topId;
+
+                    // If we won, speak celebration
+                    if (isWin) {
+                        speak('জ্যাকপট! আপনি জিতেছেন!', 2);
+                    }
+                }
+            } catch (e) {
+                // ignore
             }
-        } catch(e) {
-            // Ignore fetch errors
         }
-    }
 
-    function startEngine() {
-        setInterval(async () => {
-            if(!isRunning) return;
-            const now = new Date();
-            const sec = now.getSeconds();
-            const rem = activeServer === '1M' ? (60 - sec) : (30 - (sec % 30));
+        // ============================================================
+        //  ENGINE LOOP
+        // ============================================================
+        async function fetchHistoryAndAnalyze() {
+            await analyzeAndPredict();
+        }
 
-            document.getElementById('time-txt').innerText = `TIME LEFT: ${rem < 10 ? '0'+rem : rem}s`;
-            await checkWin();
-            await analyzeLogic();
-        }, 1000);
-    }
+        function startEngine() {
+            // Run every 1 second
+            setInterval(async () => {
+                if (!isRunning) return;
 
-// === DRAG & DROP LOGIC ===
-    function setupDrag(el) {
-        let offset = [0,0], isDown = false;
+                // Update timer
+                const now = new Date();
+                const sec = now.getSeconds();
+                const rem = activeServer === '1M' ? (60 - sec) : (30 - (sec % 30));
+                document.getElementById('time-txt').innerText = `TIME LEFT: ${rem < 10 ? '0' + rem : rem}s`;
 
-        const start = (e) => {
-            isDown = true;
-            let cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-            let cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-            offset = [el.offsetLeft - cx, el.offsetTop - cy];
-        };
+                // Check for win (using latest result)
+                await checkWin();
 
-        const move = (e) => {
-            if(!isDown) return;
-            let cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-            let cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
-            el.style.left = (cx + offset[0]) + 'px';
-            el.style.top = (cy + offset[1]) + 'px';
-        };
+                // Re-analyze pattern & predict for the next round
+                // (but only if enough time has passed since last analysis)
+                const nowMs = Date.now();
+                if (nowMs - lastFetchTime > 2000) {
+                    await analyzeAndPredict();
+                    lastFetchTime = nowMs;
+                }
+            }, 1000);
+        }
 
-        el.addEventListener('mousedown', start);
-        el.addEventListener('touchstart', start, {passive: false});
-        document.addEventListener('mouseup', () => isDown = false);
-        document.addEventListener('touchend', () => isDown = false);
-        document.addEventListener('mousemove', move);
-        document.addEventListener('touchmove', (e) => {
-            if(isDown) { e.preventDefault(); move(e); }
-        }, {passive: false});
-    }
+        // ============================================================
+        //  DRAG & DROP (panel + history)
+        // ============================================================
+        function setupDrag(el) {
+            let offset = [0, 0],
+                isDown = false;
+            const start = (e) => {
+                isDown = true;
+                const cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+                offset = [el.offsetLeft - cx, el.offsetTop - cy];
+            };
+            const move = (e) => {
+                if (!isDown) return;
+                const cx = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const cy = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+                el.style.left = (cx + offset[0]) + 'px';
+                el.style.top = (cy + offset[1]) + 'px';
+            };
+            el.addEventListener('mousedown', start);
+            el.addEventListener('touchstart', start, { passive: false });
+            document.addEventListener('mouseup', () => isDown = false);
+            document.addEventListener('touchend', () => isDown = false);
+            document.addEventListener('mousemove', move);
+            document.addEventListener('touchmove', (e) => {
+                if (isDown) { e.preventDefault();
+                    move(e); }
+            }, { passive: false });
+        }
 
-    setupDrag(panel);
-    setupDrag(document.getElementById('history-overlay'));
-</script>
+        setupDrag(panel);
+        setupDrag(document.getElementById('history-overlay'));
 
-</body></html>
+        // ============================================================
+        //  INIT
+        // ============================================================
+        // Pre-fetch once on load to warm up
+        window.addEventListener('load', () => {
+            // if we have a server selected already (from earlier), start
+            if (apiURL) {
+                fetchHistoryAndAnalyze();
+            }
+        });
+
+        console.log('✅ RC AURA HACK — Pattern System (pettarn) loaded.');
+    </script>
+
+</body>
+</html>
